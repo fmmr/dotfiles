@@ -4,7 +4,7 @@ function git_prompt() {
   then
 	REV=`git log --pretty=format:'%h' | head -1`
      BRANCH=`git branch 2>&1 | grep ^*|awk '{print $2}'`
-     DIRTY=`git status 2>&1 | grep -E "^no changes|^nothing added" > /dev/null && echo "*"`
+     DIRTY=`git status 2>&1 | grep -E "Changes not staged for commit|Changes to be committed|nothing added to commit but" > /dev/null && echo "*"`
      [[ $DIRTY ]] && COLOR="$FRED" || COLOR="$RS"
      GITPROMPT=`echo -e "$FWHT"g"$RS:$COLOR$BRANCH, $REV$DIRTY$RS"`
   else

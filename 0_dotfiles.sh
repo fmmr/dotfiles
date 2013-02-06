@@ -1,9 +1,9 @@
 DOTFILES=$HOME/.dotfiles
 
-ls $DOTFILES/preprocess/* >/dev/null 2>&1
+ls $DOTFILES/pre/* >/dev/null 2>&1
 found=$?
 if [ $found -eq 0 ]; then
-	for f in `ls $DOTFILES/preprocess/*`; do
+	for f in `ls $DOTFILES/pre/*`; do
 		source $f
 	done
 fi
