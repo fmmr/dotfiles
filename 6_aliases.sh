@@ -38,7 +38,7 @@ alias 'gitu=cd ~/finn/search && for i in `ls`; do echo "----UPDATING $i----"; cd
 
 
 # SSH-ING
-for i in `grep "^Host" ~/.ssh/config | grep -v "Host \*" | awk '{print $2, $3, $4, $5, $6, $7, $8}'`; do alias $i='ssh $i'; done
+for i in `grep "^Host" ~/.ssh/config | grep -v "Host \*" | awk '{print $2, $3, $4, $5, $6, $7, $8}'`; do alias $i="ssh $i"; done
 
 # CD-ing
 alias 'finn=cd /Users/frerodla/finn/iad/trunk'

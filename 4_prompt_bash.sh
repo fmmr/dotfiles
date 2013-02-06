@@ -93,14 +93,14 @@ function path_prompt(){
 	MAX=48
 	PRE=25
 	POST=20
-	PWD=`pwd`
-	PWD=${PWD/$HOME/"~"}
-	LENGTH=${#PWD}
+	my_path=`pwd`
+	my_path=${my_path/$HOME/"~"}
+	LENGTH=${#my_path}
 	let "LASTIDX=$LENGTH-$POST" 
 	if [ $LENGTH -ge $MAX ]; then
-	   PWD=${PWD:0:$PRE}"..."${PWD:$LASTIDX}	
+	   my_path=${PWD:0:$PRE}"..."${PWD:$LASTIDX}	
 	fi
-	PATHPROMPT="$HC$FBLE$PWD$RS"
+	PATHPROMPT="$HC$FBLE$my_path$RS"
 }
 COMP=$(scutil --get ComputerName)
 
@@ -108,11 +108,11 @@ bash_prompt() {
 		git_prompt
 		ruby_prompt
 		java_prompt
+		scala_prompt
 		root_prompt
 		num_files_prompt
 		where_prompt
 		path_prompt
-		scala_prompt
 
 		WHOPROMPT="$FWHT"w"$RS:\\\u"
 		
