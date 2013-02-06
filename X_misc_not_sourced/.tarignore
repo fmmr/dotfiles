@@ -1,0 +1,9 @@
+.DS_Store
+.git
+.gitignore
+.sass-cache
+db_dumps
+./Documents/Microsoft*
+./Documents/2Manage*
+./bin/log
+./Documents/MacGourmet*
