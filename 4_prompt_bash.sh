@@ -89,7 +89,7 @@ bash_prompt() {
 		WHOPROMPT="$FWHT"w"$RS:\\\u"
 		#compensate=3
     	#PS1=$(printf "%*s\r%s\$ " "$(($(tput cols)+${compensate}))" "$RIGHT" "$LEFT")
-		RIGHT=`echo -e "$RT$FGRY[\A]$RS" $FMAG${COMP}$RS $NUMFILESPROMPT $WHOPROMPT $JAVAPROMPT $SCALAPROMPT $RUBYPROMPT $GITPROMPT $PATHPROMPT`
+		RIGHT=`echo -e "$RT$FGRY[\A]$RS" $HOST_PROMPT_COLOR${COMP}$RS $NUMFILESPROMPT $WHOPROMPT $JAVAPROMPT $SCALAPROMPT $RUBYPROMPT $GITPROMPT $PATHPROMPT`
 		if [ "z$PROMPT_TWO_LINES" = "z1" ]; then
 			RIGHT="╭  $RIGHT"
 			LEFT=`echo -e "\n╰  $RT"`
