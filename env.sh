@@ -10,7 +10,15 @@ export M2="$M2_HOME/bin"
 export MAVEN_OPTS="-d64 -server -Xmx1200m -Xms256m -Djava.awt.headless=true"
 
 export EDITOR="nano"
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+
+
+/usr/libexec/java_home -v 1.7 > /dev/null  2>&1
+if [ $? -eq 0 ]; then
+	export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+else
+	export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
+fi
+
 export HADOOP_HOME=/usr/local/hadoop
 export ACTIVEMQ_HOME=/usr/local/activemq
 export SCALA_HOME=/usr/local/scala
