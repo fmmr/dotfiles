@@ -11,6 +11,7 @@ if [ $found -eq 0 ]; then
 fi
 
 . $DOTFILES/3_env.sh
+. $DOTFILES/3_path.sh
 . $DOTFILES/4_prompt_bash.sh
 . $DOTFILES/5_completions.sh
 . $DOTFILES/6_aliases.sh
