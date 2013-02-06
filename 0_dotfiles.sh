@@ -11,9 +11,8 @@ fi
 
 . $DOTFILES/env.sh
 . $DOTFILES/completions.sh
-. $DOTFILES/bash_prompt.sh
+. $DOTFILES/prompt_bash.sh
 . $DOTFILES/aliases.sh
-
 
 ls $DOTFILES/priv/* >/dev/null 2>&1
 found=$?
