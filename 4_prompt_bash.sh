@@ -1,5 +1,9 @@
 # for colours used see: 2_pre/colours.sh
 
+# tip: if [ -z "$SSH_CLIENT" ]; then
+# https://wiki.archlinux.org/index.php/Color_Bash_Prompt
+# http://maketecheasier.com/8-useful-and-interesting-bash-prompts/2009/09/04
+
 function git_prompt() {
   if git status 2>&1| grep -q "^# On branch"
   then
