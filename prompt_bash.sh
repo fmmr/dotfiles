@@ -116,11 +116,15 @@ bash_prompt() {
 
 		WHOPROMPT="$FWHT"w"$RS:\\\u"
 		
-		RIGHT=`echo -e "╭  $RT$HC$FYEL[\A]$RS" $FMAG${COMP}$RS $NUMFILESPROMPT $WHOPROMPT $JAVAPROMPT $SCALAPROMPT $RUBYPROMPT $GITPROMPT $PATHPROMPT`
-		 LEFT=`echo -e "╰ $RT "`
-	  
 		#compensate=3
     	#PS1=$(printf "%*s\r%s\$ " "$(($(tput cols)+${compensate}))" "$RIGHT" "$LEFT")
-		PS1="$RIGHT\n$LEFT\$$WHEREPROMPT "
+		RIGHT=`echo -e "$RT$FGRY[\A]$RS" $FMAG${COMP}$RS $NUMFILESPROMPT $WHOPROMPT $JAVAPROMPT $SCALAPROMPT $RUBYPROMPT $GITPROMPT $PATHPROMPT`
+		if [ "z$PROMPT_TWO_LINES" = "z1" ]; then
+			RIGHT="╭  $RIGHT"
+			LEFT=`echo -e "\n╰ $RT "`
+		else
+			LEFT=""
+		fi
+		PS1="$RIGHT$LEFT\$$WHEREPROMPT "
 }
 PROMPT_COMMAND=bash_prompt

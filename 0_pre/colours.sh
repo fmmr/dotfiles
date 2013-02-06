@@ -14,6 +14,7 @@ FBLE="\[\033[34m\]" # foreground blue
 FMAG="\[\033[35m\]" # foreground magenta
 FCYN="\[\033[36m\]" # foreground cyan
 FWHT="\[\033[37m\]" # foreground white
+FGRY="\[\033[01;30m\]" # foreground dark grey
 BBLK="\[\033[40m\]" # background black
 BRED="\[\033[41m\]" # background red
 BGRN="\[\033[42m\]" # background green

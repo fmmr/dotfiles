@@ -1,4 +1,6 @@
-priv_not_sourced/*
 priv/*
 !/priv/.do_not_remove
+1_settings/*
+!/1_settings/.do_not_remove
+priv_not_sourced/*
 !/priv_not_sourced/.do_not_remove

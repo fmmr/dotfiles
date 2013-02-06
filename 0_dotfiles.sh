@@ -1,5 +1,7 @@
 DOTFILES=$HOME/.dotfiles
 
+source $DOTFILES/1_settings.sh
+
 ls $DOTFILES/0_pre/* >/dev/null 2>&1
 found=$?
 if [ $found -eq 0 ]; then
@@ -7,7 +9,6 @@ if [ $found -eq 0 ]; then
 		source $f
 	done
 fi
-
 
 . $DOTFILES/env.sh
 . $DOTFILES/completions.sh
