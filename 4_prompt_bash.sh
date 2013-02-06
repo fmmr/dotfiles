@@ -1,3 +1,4 @@
+# for colours used see: 2_pre/colours.sh
 
 function git_prompt() {
   if git status 2>&1| grep -q "^# On branch"
@@ -6,86 +7,43 @@ function git_prompt() {
      BRANCH=`git branch 2>&1 | grep ^*|awk '{print $2}'`
      DIRTY=`git status 2>&1 | grep -E "Changes not staged for commit|Changes to be committed|nothing added to commit but" > /dev/null && echo "*"`
      [[ $DIRTY ]] && COLOR="$FRED" || COLOR="$RS"
-     GITPROMPT=`echo -e "$FWHT"g"$RS:$COLOR$BRANCH, $REV$DIRTY$RS"`
+     echo "$FWHT"g"$RS:$COLOR$BRANCH, $REV$DIRTY$RS"
   else
-     GITPROMPT=""
+     echo ""
   fi
 }
 
-function ruby_prompt(){
-	ls *.rb >/dev/null 2>&1
-	rub=$?
 
-	ls *.feature >/dev/null 2>&1
-
-	if [ $? -eq 0 -o $rub -eq 0 ]
-	then
-		RUBY_VERSION=`ruby -v | awk {'print $2'}`
-		RUBYPROMPT=`echo -e "$FWHT"r"$RS:$RUBY_VERSION$RS"`
-	else
-     	RUBYPROMPT=""
-	fi
-}
-
-function scala_prompt(){
-	ls *.scala >/dev/null 2>&1
-	rub=$?
-
-	if [ $rub -eq 0 ]; then
-		SCALA_VERSION=`scala -version | awk {'print $5'}`
-		SCALAPROMPT="$FWHT"s"$RS:$SCALA_VERSION$RS"
-	else
-     	SCALAPROMPT=""
-	fi
-}
-
-
-function java_prompt(){
-	ls *.java >/dev/null 2>&1
-	j=$?
-
-	ls pom.xml >/dev/null 2>&1
-
-	if [ $? -eq 0 -o $j -eq 0 ]
-	then
-		JAVA_VERSION=`java -version 2>&1 | awk "/version/ {print $3}" | egrep -o "[0-9]+\.[0-9]+"` 
-		JAVAPROMPT="$FWHT"j"$RS:$JAVA_VERSION"
-	else
-		JAVAPROMPT=""
-	fi
-	
-	
-}
-
-function num_files_prompt(){
-	NUM_FILES=`ls | wc -l | tr -d ' '` 
-	NUMFILESPROMPT="$FWHT"f"$RS:$NUM_FILES"
-}
+# function num_files_prompt(){
+# 	NUM_FILES=`ls | wc -l | tr -d ' '` 
+# 	echo "$FWHT"f"$RS:$NUM_FILES"
+# }
 
 function where_prompt(){
-	PWD=`pwd`
-	if [ $PWD = $HOME ]; then
-		WHEREPROMPT="$HC$FBLE~$RS"
-	elif [[ $PWD =~ "frerodla/finn/search" ]]; then
-		WHEREPROMPT="$HC$FGRN"s"$RS"
-	elif [[ $PWD = "/Users/frerodla/finn" ]]; then
-		WHEREPROMPT="$HC$FGRN"f"$RS"
-	elif [[ $PWD =~ "frerodla/finn" ]]; then
-		WHEREPROMPT="$FGRN"f"$RS"
-	elif [[ $PWD =~ "frerodla/bin" ]]; then
-		WHEREPROMPT="$HC$FGRN"b"$RS"
-	elif [[ ! $PWD =~ "frerodla" ]]; then
-		WHEREPROMPT="$FRED"s"$RS"
+	dir=`pwd`
+	w=`whoami`
+	if [ $dir = $HOME ]; then
+		echo "$HC$FBLE~$RS"
+	elif [[ $dir =~ "$w/finn/search" ]]; then
+		echo "$HC$FGRN"s"$RS"
+	elif [[ $dir = "/Users/$w/finn" ]]; then
+		echo "$HC$FGRN"f"$RS"
+	elif [[ $dir =~ "$w/finn" ]]; then
+		echo "$FGRN"f"$RS"
+	elif [[ $dir =~ "$w/bin" ]]; then
+		echo "$HC$FGRN"b"$RS"
+	elif [[ ! $dir =~ "$w" ]]; then
+		echo "$FRED"s"$RS"
 	else
-		WHEREPROMPT=""
+		echo ""
 	fi
 }
 
 function root_prompt(){
 	if [ $(id -u) -eq 0 ]; then # you are root, set red colour prompt
-		RT=`echo -e "$FRED""ROOT! ""$RS"`
+		echo "$FRED""ROOT! ""$RS"
 	else
-		RT=""
+		echo ""
 	fi
 }
 
@@ -98,30 +56,43 @@ function path_prompt(){
 	LENGTH=${#my_path}
 	let "LASTIDX=$LENGTH-$POST" 
 	if [ $LENGTH -ge $MAX ]; then
-	   my_path=${PWD:0:$PRE}"..."${PWD:$LASTIDX}	
+	   my_path=${my_path:0:$PRE}"..."${my_path:$LASTIDX}	
 	fi
-	PATHPROMPT="$HC$FBLE$my_path$RS"
+	echo "$HC$FBLE$my_path$RS"
 }
 COMP=$(scutil --get ComputerName)
 
-bash_prompt() {
-		git_prompt
-		ruby_prompt
-		java_prompt
-		scala_prompt
-		root_prompt
-		num_files_prompt
-		where_prompt
-		path_prompt
 
+function version_prompt(){
+	ls | egrep "\.$2" >/dev/null 2>&1
+	if [ $? -eq 0 ]; then
+		if [ -z "$6" ]; then
+			version=`$3  2>&1 | awk -v num=$5 -v v=$4 '/v/ {print $num}'`
+		else
+			version=`$3  2>&1 | awk -v num=$5 -v v=$4 '/v/ {print $num}'  | egrep -o $6`
+		fi
+		echo "$FWHT"$1"$RS:"$version"$RS"; 
+	else
+		echo ""; 
+	fi
+}
+
+bash_prompt() {
+		NUMFILESPROMPT=""
+		GITPROMPT=$(git_prompt)
+		RUBYPROMPT=$(version_prompt r "rb|\.feature" "ruby -v" ruby 2)
+		JAVAPROMPT=$(version_prompt j "java|pom.xml" "java -version" version 3 [0-9]+\.[0-9]+)
+		SCALAPROMPT=$(version_prompt s scala "scala -version" version 5)
+		RT=$(root_prompt)
+		WHEREPROMPT=$(where_prompt)
+		PATHPROMPT=$(path_prompt)
 		WHOPROMPT="$FWHT"w"$RS:\\\u"
-		
 		#compensate=3
     	#PS1=$(printf "%*s\r%s\$ " "$(($(tput cols)+${compensate}))" "$RIGHT" "$LEFT")
 		RIGHT=`echo -e "$RT$FGRY[\A]$RS" $FMAG${COMP}$RS $NUMFILESPROMPT $WHOPROMPT $JAVAPROMPT $SCALAPROMPT $RUBYPROMPT $GITPROMPT $PATHPROMPT`
 		if [ "z$PROMPT_TWO_LINES" = "z1" ]; then
 			RIGHT="╭  $RIGHT"
-			LEFT=`echo -e "\n╰ $RT "`
+			LEFT=`echo -e "\n╰  $RT"`
 		else
 			LEFT=""
 		fi
