@@ -1,15 +1,14 @@
 DOTFILES=$HOME/.dotfiles
 
-source $DOTFILES/1_settings.sh
-
-ls $DOTFILES/2_pre/* >/dev/null 2>&1
+ls $DOTFILES/0_pre/* >/dev/null 2>&1
 found=$?
 if [ $found -eq 0 ]; then
-	for f in `ls $DOTFILES/2_pre/*`; do
+	for f in `ls $DOTFILES/0_pre/*`; do
 		source $f
 	done
 fi
 
+. $DOTFILES/1_settings.sh
 . $DOTFILES/3_env.sh
 . $DOTFILES/3_path.sh
 . $DOTFILES/4_prompt_bash.sh
