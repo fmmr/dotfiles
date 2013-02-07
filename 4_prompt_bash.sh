@@ -73,7 +73,7 @@ function version_prompt(){
 		if [ -z "$6" ]; then
 			version=`$3  2>&1 | awk -v num=$5 -v v=$4 '/v/ {print $num}'`
 		else
-			version=`$3  2>&1 | awk -v num=$5 -v v=$4 '/v/ {print $num}'  | egrep -o $6`
+			version=`$3  2>&1 | awk -v num=$5 -v v=$4 '/v/ {print $num}'  | egrep -o "$6"`
 		fi
 		echo "$FWHT"$1"$RS:"$version"$RS"; 
 	else
@@ -85,7 +85,7 @@ bash_prompt() {
 		NUMFILESPROMPT=""
 		GITPROMPT=$(git_prompt)
 		RUBYPROMPT=$(version_prompt r "rb|\.feature" "ruby -v" ruby 2)
-		JAVAPROMPT=$(version_prompt j "java|pom.xml" "java -version" version 3 [0-9]+\.[0-9]+)
+		JAVAPROMPT=$(version_prompt j "java|pom.xml" "java -version" version 3 "[0-9]+\.[0-9]+")
 		SCALAPROMPT=$(version_prompt s scala "scala -version" version 5)
 		RT=$(root_prompt)
 		WHEREPROMPT=$(where_prompt)
