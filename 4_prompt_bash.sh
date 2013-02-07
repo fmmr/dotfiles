@@ -15,7 +15,6 @@ function git_prompt() {
   fi
 }
 
-
 # function num_files_prompt(){
 # 	NUM_FILES=`ls | wc -l | tr -d ' '` 
 # 	echo "$FWHT"f"$RS:$NUM_FILES"
@@ -59,7 +58,6 @@ function path_prompt(){
 	echo "$HC$FBLE$my_path$RS"
 }
 COMP=$(scutil --get ComputerName)
-
 
 function version_prompt(){
 	ls | egrep "\.$2" >/dev/null 2>&1
