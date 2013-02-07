@@ -12,8 +12,6 @@ function git_prompt() {
      DIRTY=`git status 2>&1 | grep -E "Changes not staged for commit|Changes to be committed|nothing added to commit but" > /dev/null && echo "*"`
      [[ $DIRTY ]] && COLOR="$FRED" || COLOR="$RS"
      echo "$FWHT"g"$RS:$COLOR$BRANCH, $REV$DIRTY$RS"
-  else
-     echo ""
   fi
 }
 
@@ -38,16 +36,12 @@ function where_prompt(){
 		echo "$HC$FGRN"b"$RS"
 	elif [[ ! $dir =~ "$w" ]]; then
 		echo "$FRED"s"$RS"
-	else
-		echo ""
 	fi
 }
 
 function root_prompt(){
 	if [ $(id -u) -eq 0 ]; then # you are root, set red colour prompt
 		echo "$FRED""ROOT! ""$RS"
-	else
-		echo ""
 	fi
 }
 
@@ -76,8 +70,6 @@ function version_prompt(){
 			version=`$3  2>&1 | awk -v num=$5 -v v=$4 '/v/ {print $num}'  | egrep -o "$6"`
 		fi
 		echo "$FWHT"$1"$RS:"$version"$RS"; 
-	else
-		echo ""; 
 	fi
 }
 
