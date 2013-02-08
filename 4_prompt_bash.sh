@@ -23,17 +23,17 @@ function git_prompt() {
 function where_prompt(){
 	dir=`pwd`
 	w=`whoami`
-	if [ $dir = $HOME ]; then
+	if [ "$dir" = $HOME ]; then
 		echo "$HC$FBLE~$RS"
-	elif [[ $dir =~ "$w/finn/search" ]]; then
+	elif [[ "$dir" =~ "$w/finn/search" ]]; then
 		echo "$HC$FGRN"s"$RS"
-	elif [[ $dir = "/Users/$w/finn" ]]; then
+	elif [[ "$dir" = "/Users/$w/finn" ]]; then
 		echo "$HC$FGRN"f"$RS"
-	elif [[ $dir =~ "$w/finn" ]]; then
+	elif [[ "$dir" =~ "$w/finn" ]]; then
 		echo "$FGRN"f"$RS"
-	elif [[ $dir =~ "$w/bin" ]]; then
+	elif [[ "$dir" =~ "$w/bin" ]]; then
 		echo "$HC$FGRN"b"$RS"
-	elif [[ ! $dir =~ "$w" ]]; then
+	elif [[ ! "$dir" =~ "$w" ]]; then
 		echo "$FRED"s"$RS"
 	fi
 }
