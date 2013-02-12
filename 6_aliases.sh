@@ -31,11 +31,11 @@ alias 'st_solr4=cd /usr/local/apache-solr-4.0/example && java -jar start.jar'
 alias 't=tail -f /Users/fmr/bin/log/rsync.log'
 alias 'where=type -all'
 alias 'x=xargs'
+alias update_locate='sudo /usr/libexec/locate.updatedb'
 
 # FINN
 alias 'gits=cd ~/finn/search && for i in `ls`; do echo "----CHECKING $i----"; cd $i; git s; cd ..; done'
 alias 'gitu=cd ~/finn/search && for i in `ls`; do echo "----UPDATING $i----"; cd $i; git pull; cd ..; done'
-
 
 # SSH-ING
 for i in `grep "^Host" ~/.ssh/config | grep -v "Host \*" | awk '{print $2, $3, $4, $5, $6, $7, $8}'`; do alias $i="ssh $i"; done
@@ -46,3 +46,8 @@ alias 'fjalar=cd /Users/frerodla/finn/search/search-fjalar'
 alias 'repo=cd /Users/frerodla/finn/repo'
 alias 'search=cd /Users/frerodla/finn/search'
 alias 'felles=cd "/Volumes/Finn/Felles/"'
+
+# RODLAND
+alias stop_rd='sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -agent -stop'
+alias maillog='tail -f /var/log/mail.log /var/log/system.log'
+alias dwp='diff -w -r ~/wp/wp-content/themes/autofocuspro_2.0.6_orig/ ~/wp/wp-content/themes/autofocuspro_2.0.6_fmr_mod/'
