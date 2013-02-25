@@ -1,0 +1,15 @@
+#!/bin/bash
+ 
+
+if [ "z$1" = "z" ]; then
+	NUM=30
+else
+	NUM=$1
+fi
+
+while :
+do
+	clear
+	git --no-pager log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all -$NUM
+	sleep 1
+done

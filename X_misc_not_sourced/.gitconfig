@@ -1,11 +1,18 @@
 [user]
-	name = frerodla
-	email = fmr@finn.no
+	name = Fredrik Rodland
+	email = git@rodland.no
 
 [alias]
 lg = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 revprompt = log --pretty=format:'%h'
+lol = log --pretty=oneline --abbrev-commit --graph --decorate --all
 s = status
 
 [core]
 	autocrlf = input
+	editor = nano
+
+[branch]
+       autosetuprebase = always
+[color]
+	ui = auto
