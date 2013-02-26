@@ -31,7 +31,7 @@ alias 'st_solr4=cd /usr/local/apache-solr-4.0/example && java -jar start.jar'
 alias 't=tail -f /Users/fmr/bin/log/rsync.log'
 alias 'where=type -all'
 alias 'x=xargs'
-
+alias check_net="ping vg.no | awk -F = {'print \$4'}"
 # FINN
 alias 'gits=cd ~/finn/search && for i in `ls`; do echo "----CHECKING $i----"; cd $i; git s; cd ..; done'
 alias 'gitu=cd ~/finn/search && for i in `ls`; do echo "----UPDATING $i----"; cd $i; git pull; cd ..; done'
