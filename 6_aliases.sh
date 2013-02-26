@@ -35,6 +35,7 @@ alias 'x=xargs'
 # FINN
 alias 'gits=cd ~/finn/search && for i in `ls`; do echo "----CHECKING $i----"; cd $i; git s; cd ..; done'
 alias 'gitu=cd ~/finn/search && for i in `ls`; do echo "----UPDATING $i----"; cd $i; git pull; cd ..; done'
+alias 'supergit=git pull && git add -A && git commit -m "supercommit from fmr `date +%s`" && git push -f'
 
 
 # SSH-ING
