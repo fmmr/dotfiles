@@ -14,16 +14,21 @@ s = status -u
 	excludesfile = /Users/frerodla/.gitignore_global
 
 [branch]
-       autosetuprebase = always
+	autosetuprebase = always
+
 [color]
 	ui = auto
+
 [credential]
 	helper = cache
+
 [mergetool]
 	prompt = false
+	
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
+
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
