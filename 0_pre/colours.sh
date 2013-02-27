@@ -10,6 +10,7 @@ FBLK="\[\033[30m\]" # foreground black
 FRED="\[\033[31m\]" # foreground red
 FGRN="\[\033[32m\]" # foreground green
 FYEL="\[\033[33m\]" # foreground yellow
+FORA="\[\033[01;33m\]" # foreground orange
 FBLE="\[\033[34m\]" # foreground blue
 FMAG="\[\033[01;35m\]" # foreground magenta
 FCYN="\[\033[36m\]" # foreground cyan
