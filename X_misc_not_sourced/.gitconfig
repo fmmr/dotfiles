@@ -6,7 +6,7 @@
 lg = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 revprompt = log --pretty=format:'%h'
 lol = log --pretty=oneline --abbrev-commit --graph --decorate --all
-s = status -u
+s = status -sb
 wd = diff --word-diff
 
 [core]
