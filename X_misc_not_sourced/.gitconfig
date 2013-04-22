@@ -1,6 +1,6 @@
 [user]
-	name = Fredrik Rodland
-	email = git@rodland.no
+	name = frerodla
+	email = fmr@finn.no
 
 [alias]
 lg = log --graph --pretty=format:'%Cred%h%Creset %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative

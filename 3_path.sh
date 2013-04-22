@@ -1,4 +1,5 @@
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/libexec/:$PATH
+export PATH=$PATH:/usr/local/node/bin
 export PATH=$PATH:$HADOOP_HOME/bin
 export PATH=$PATH:$SCALA_HOME/bin
 export PATH=$PATH:$M2:$JAVA_HOME/bin

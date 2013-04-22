@@ -1,4 +1,5 @@
-
+alias 'grep=grep --color=auto'
+alias 'egrep=egrep --color=auto'
 alias "a=awk {'print \$2'}"
 alias 'd=du -hs . && df -h .'
 alias 'df=df -h'
@@ -44,7 +45,7 @@ alias 'lt=ls -ltr'
 for i in `grep "^Host" ~/.ssh/config | grep -v "Host \*" | awk '{print $2, $3, $4, $5, $6, $7, $8}'`; do alias $i="ssh $i"; done
 
 # CD-ing
-alias 'finn=cd /Users/frerodla/finn/iad/trunk'
+alias 'finn=cd /Users/frerodla/finn/iad/iad'
 alias 'fjalar=cd /Users/frerodla/finn/search/search-fjalar'
 alias 'repo=cd /Users/frerodla/finn/repo'
 alias 'search=cd /Users/frerodla/finn/search'
