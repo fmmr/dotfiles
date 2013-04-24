@@ -5,13 +5,21 @@
 # http://maketecheasier.com/8-useful-and-interesting-bash-prompts/2009/09/04
 
 function git_prompt() {
-  if git status 2>&1| grep -q "^# On branch"
+  if git status 2>&1| grep -v "^fatal: bad default revision 'HEAD'"| egrep -q "^# On branch|^nothing to commit"
   then
-	REV=`git log --pretty=format:'%h' | head -1`
-     BRANCH=`git branch 2>&1 | grep ^*|awk '{print $2}'`
-     DIRTY=`git status 2>&1 | grep -E "Changes not staged for commit|Changes to be committed|nothing added to commit but" > /dev/null && echo "*"`
-     [[ $DIRTY ]] && COLOR="$FRED" || COLOR="$RS"
-     echo "$FWHT"g"$RS:$COLOR$BRANCH, $REV$DIRTY$RS"
+	REV=`git log --pretty=format:'%h' 2>&1| head -1`
+	if [ "$REV" == "fatal: bad default revision 'HEAD'" ]; then
+		echo "$FWHT"g"$RS:$FORA""No version$RS"
+	else
+		BRANCH=`git branch 2>&1 | grep ^*|awk '{print $2}'`
+		if [ "$BRANCH" == "(no" ]; then
+			BRANCH="$FORA""No branch$RS"
+		fi
+		
+		DIRTY=`git status 2>&1 | grep -E "Changes not staged for commit|Changes to be committed|nothing added to commit but" > /dev/null && echo "*"`
+		[[ $DIRTY ]] && COLOR="$FRED" || COLOR="$RS"
+		echo "$FWHT"g"$RS:$COLOR$BRANCH, $REV$DIRTY$RS"
+	fi
   fi
 }
 
