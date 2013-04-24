@@ -53,6 +53,7 @@ alias 'search=cd /Users/frerodla/finn/search'
 alias 'felles=cd "/Volumes/Finn/Felles/"'
 
 # RODLAND
-alias stop_rd='sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -agent -stop'
+alias stop_rd='sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -configure -access -off'
+alias start_rd='sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -allowAccessFor -users fmr -access -on -all'
 alias maillog='tail -f /var/log/mail.log /var/log/system.log'
 alias dwp='diff -w -r ~/wp/wp-content/themes/autofocuspro_2.0.6_orig/ ~/wp/wp-content/themes/autofocuspro_2.0.6_fmr_mod/'
