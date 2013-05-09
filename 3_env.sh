@@ -39,3 +39,6 @@ export HISTSIZE=2000
 export GIT_SSL_NO_VERIFY=true
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+export DYLD_LIBRARY_PATH=/usr/local/libimobiledevice-macosx:$DYLD_LIBRARY_PATH
+
