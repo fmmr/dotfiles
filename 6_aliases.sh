@@ -46,3 +46,5 @@ alias 'fjalar=cd /Users/frerodla/finn/search/search-fjalar'
 alias 'repo=cd /Users/frerodla/finn/repo'
 alias 'search=cd /Users/frerodla/finn/search'
 alias 'felles=cd "/Volumes/Finn/Felles/"'
+
+alias 'undo=rod /Users/fmr/bin/ferdig/undo'
