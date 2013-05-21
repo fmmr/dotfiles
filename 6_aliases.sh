@@ -52,8 +52,8 @@ alias 'repo=cd /Users/frerodla/finn/repo'
 alias 'search=cd /Users/frerodla/finn/search'
 alias 'felles=cd "/Volumes/Finn/Felles/"'
 
-alias 'undo=rod /Users/fmr/bin/ferdig/undo'
-=======
+alias 'u=rod /Users/fmr/bin/ferdig/undo'
+
 # RODLAND
 alias stop_rd='sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -configure -access -off'
 alias start_rd='sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -allowAccessFor -users fmr -access -on -all'
