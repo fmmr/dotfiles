@@ -5,7 +5,7 @@ export LC_ALL=en_US.utf-8
 export LANG=$LC_ALL
 
 export MAVEN_HOME=$HOME/.m2
-export M2_HOME="/usr/share/maven"
+export M2_HOME="/usr/local/maven"
 export M2="$M2_HOME/bin"
 export MAVEN_OPTS="-d64 -server -Xmx1200m -Xms256m -Djava.awt.headless=true"
 
@@ -18,6 +18,7 @@ if [ $? -eq 0 ]; then
 else
 	export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
 fi
+export IDEA_JDK=$JAVA_HOME
 
 export HADOOP_HOME=/usr/local/hadoop
 export ACTIVEMQ_HOME=/usr/local/activemq
