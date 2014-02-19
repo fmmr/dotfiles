@@ -35,3 +35,5 @@ wd = diff --word-diff
 	trustExitCode = true
 [branch "master"]
 	rebase = true
+[push]
+	default = upstream
