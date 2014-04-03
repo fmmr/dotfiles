@@ -8,6 +8,8 @@ revprompt = log --pretty=format:'%h'
 lol = log --pretty=oneline --abbrev-commit --graph --decorate --all
 s = status -sb
 wd = diff --word-diff
+	backone = reset --hard HEAD~1
+	co = checkout
 
 [core]
 	autocrlf = input
@@ -37,3 +39,6 @@ wd = diff --word-diff
 	rebase = true
 [push]
 	default = upstream
+
+[branch]
+       autosetuprebase = always

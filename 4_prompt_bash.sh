@@ -5,7 +5,7 @@
 # http://maketecheasier.com/8-useful-and-interesting-bash-prompts/2009/09/04
 
 function git_prompt() {
-  if git status 2>&1| grep -v "^fatal: bad default revision 'HEAD'"| egrep -q "^# On branch|^nothing to commit"
+  if git status 2>&1| grep -v "^fatal: bad default revision 'HEAD'"| egrep -q "On branch|^nothing to commit"
   then
 	REV=`git log --pretty=format:'%h' 2>&1| head -1`
 	if [ "$REV" == "fatal: bad default revision 'HEAD'" ]; then
