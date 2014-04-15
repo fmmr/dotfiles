@@ -10,7 +10,7 @@ fi
 
 # Function to quick cd to git repositories, uses _set_gitrepository-TC
 cg() {
-	D=`find $WORK_DIR -type d -name "*.git" -maxdepth 3 | grep $1`"/.."
+	D=`find $WORK_DIR -type d -name "*.git" -maxdepth 3 | grep $1 |head -1`"/.."
 	builtin cd $D
 }
 
