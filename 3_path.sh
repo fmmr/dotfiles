@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:$HOME/bin/ferdig:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/libexec:/root/bin:$PATH
+export PATH=$HOME/bin:$HOME/bin/ferdig:$HOME/bin/maisen:$HOME/bin/rod:$HOME/bin/finn:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/libexec:/root/bin:$PATH
 export PATH=$PATH:/usr/local/node/bin
 export PATH=$PATH:$HADOOP_HOME/bin
 export PATH=$PATH:$SCALA_HOME/bin
