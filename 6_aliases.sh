@@ -70,5 +70,7 @@ alias email='ssh internalapi1 "grep REP /iad/finn/search-emailsender/logs/search
 
 alias top='htop -d 2 --sort-key PERCENT_CPU'
 alias visualvm='/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/bin/jvisualvm'
-alias "jmx_push=ps auxwwwww | grep D61000 | grep -v grep | awk {'print \$2'} | xargs kill; ssh -f -N -D61000 mod05; jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=61000 localhost:27565"
-alias "jmx_alert=ps auxwwwww | grep D61000 | grep -v grep | awk {'print \$2'} | xargs kill; ssh -f -N -D61000 mod05; jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=61000 localhost:27561"
+alias "jmx_push=ps auxwwwww | grep D61000 | grep -v grep | awk {'print \$2'} | xargs kill; ssh -f -N -D61000 mod05; /Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home/bin/jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=61000 localhost:27565"
+alias "jmx_alert=ps auxwwwww | grep D61000 | grep -v grep | awk {'print \$2'} | xargs kill; ssh -f -N -D61000 mod05; /Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home/bin/jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=61000 localhost:27561"
+alias 'start_tail=ssh -l finn -t mod05.finn.no "nohup fmr/fmr_start_fill.sh"'
+alias as='ssh -t mod05 "cd /iad/finn/search-alertserver/logs; bash"'
