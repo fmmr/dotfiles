@@ -74,3 +74,4 @@ alias "jmx_push=ps auxwwwww | grep D61000 | grep -v grep | awk {'print \$2'} | x
 alias "jmx_alert=ps auxwwwww | grep D61000 | grep -v grep | awk {'print \$2'} | xargs kill; ssh -f -N -D61000 mod05; /Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home/bin/jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=61000 localhost:27561"
 alias 'start_tail=ssh -l finn -t mod05.finn.no "nohup fmr/fmr_start_fill.sh"'
 alias as='ssh -t mod05 "cd /iad/finn/search-alertserver/logs; bash"'
+alias cas='ssh -t mod01 "/iad/common/apps/cassandra/bin/cqlsh cassandra01.finn.no 7613"'

@@ -11,7 +11,7 @@ export MAVEN_HOME=$HOME/.m2
 #export MAVEN_OPTS="-d64 -server -Xmx1200m -Xms256m -Djava.awt.headless=true"
 
 export EDITOR="nano"
-
+export FPP_EDITOR="mate"
 
 /usr/libexec/java_home -v 1.8 > /dev/null  2>&1
 if [ $? -eq 0 ]; then

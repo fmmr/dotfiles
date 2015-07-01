@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:$HOME/bin/ferdig:$HOME/bin/maisen:$HOME/bin/rod:$HOME/bin/finn:$HOME/bin/backup:$PATH
+export PATH=$HOME/bin:$HOME/bin/finn:$HOME/bin/ferdig:$HOME/bin/maisen:$HOME/bin/rod:$HOME/bin/finn:$HOME/bin/backup:$PATH
 export PATH=$PATH:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/libexec:/root/bin
 export PATH=$PATH:/usr/local/node/bin
 export PATH=$PATH:$HADOOP_HOME/bin
