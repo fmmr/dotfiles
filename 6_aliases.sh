@@ -62,7 +62,7 @@ alias maillog='tail -f /var/log/mail.log /var/log/system.log'
 alias dwp='diff -w -r ~/wp/wp-content/themes/autofocuspro_2.0.6_orig/ ~/wp/wp-content/themes/autofocuspro_2.0.6_fmr_mod/'
 
 
-alias push='ssh mod05 tail -F "/iad/finn/search-pushnotifier/logs/search-pushnotifier.log"'
+alias push='ssh alert1 tail -F "/iad/finn/search-pushnotifier/logs/search-pushnotifier.log"'
 alias push_mon='ssh mod05 tail -F "/iad/finn/search-pushnotifier/logs/search-pushnotifier.log | grep --line-buffered monitor"'
 alias alert='ssh mod05 tail -F "/iad/finn/search-alertserver/logs/alertserver.log"'
 alias alert_mon='ssh mod05 tail -F "/iad/finn/search-alertserver/logs/alertserver-monitor.log"'
@@ -70,8 +70,9 @@ alias email='ssh internalapi1 "grep REP /iad/finn/search-emailsender/logs/search
 
 alias top='htop -d 2 --sort-key PERCENT_CPU'
 alias visualvm='/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/bin/jvisualvm'
-alias "jmx_push=ps auxwwwww | grep D61000 | grep -v grep | awk {'print \$2'} | xargs kill; ssh -f -N -D61000 mod05; /Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home/bin/jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=61000 localhost:27565"
+alias "jmx_push=ps auxwwwww | grep D61000 | grep -v grep | awk {'print \$2'} | xargs kill; ssh -f -N -D61000 alert1; /Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home/bin/jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=61000 localhost:27565"
 alias "jmx_alert=ps auxwwwww | grep D61000 | grep -v grep | awk {'print \$2'} | xargs kill; ssh -f -N -D61000 mod05; /Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home/bin/jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=61000 localhost:27561"
 alias 'start_tail=ssh -l finn -t mod05.finn.no "nohup fmr/fmr_start_fill.sh"'
 alias as='ssh -t mod05 "cd /iad/finn/search-alertserver/logs; bash"'
 alias cas='ssh -t mod01 "/iad/common/apps/cassandra/bin/cqlsh cassandra01.finn.no 7613"'
+alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
