@@ -1,5 +1,5 @@
 DOTFILES=$HOME/.dotfiles
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 ls $DOTFILES/0_pre/* >/dev/null 2>&1
 found=$?
 if [ $found -eq 0 ]; then
