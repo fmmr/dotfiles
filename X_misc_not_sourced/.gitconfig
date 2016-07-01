@@ -13,6 +13,8 @@ wd = diff --word-diff
 backone = reset --hard HEAD~1
 co = checkout
 ci = commit -a
+	amend = commit --amend
+	hard = reset --hard
 
 [core]
 	autocrlf = input
