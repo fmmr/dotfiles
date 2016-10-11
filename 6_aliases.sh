@@ -70,7 +70,7 @@ alias email='ssh internalapi1 "grep REP /iad/finn/search-emailsender/logs/search
 
 alias top='htop -d 2 --sort-key PERCENT_CPU'
 alias visualvm='/Library/Java/JavaVirtualMachines/jdk1.8.0_71.jdk/Contents/Home/bin/jvisualvm'
-alias jmx_push="$HOME/bin/jmx_tunnel.sh -p 27565 -s alert1-prod2.finn.no"
+alias jmx_push="jmx_tunnel.sh -s alert1-prod1.z01.finn.no -p 27565"
 alias jmx_api1="$HOME/bin/jmx_tunnel.sh -p 28450 -s api1.finn.no"
 alias jmx_alert11="$HOME/bin/jmx_tunnel.sh -p 27561 -s alert1-prod1.z01.finn.no"
 alias jmx_alert21="$HOME/bin/jmx_tunnel.sh -p 27561 -s alert2-prod1.z01.finn.no"
@@ -80,3 +80,5 @@ alias 'start_tail=ssh -l finn -t mod05.finn.no "nohup fmr/fmr_start_fill.sh"'
 alias as='ssh -t mod05 "cd /iad/finn/search-alertserver/logs; bash"'
 alias cas='ssh -t mod01 "/iad/common/apps/cassandra/bin/cqlsh cassandra01.finn.no 7613"'
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
+
+alias oc='sudo openconnect --juniper gate.schibsted.no'

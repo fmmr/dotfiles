@@ -14,6 +14,7 @@ fi
 . $DOTFILES/4_prompt_bash.sh
 . $DOTFILES/5_completions.sh
 . $DOTFILES/6_aliases.sh
+. $DOTFILES/9_google.sh
 
 ls $DOTFILES/7_priv/* >/dev/null 2>&1
 found=$?
