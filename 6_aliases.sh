@@ -1,3 +1,4 @@
+alias 'tar=gtar'
 alias 'grep=grep --color=auto'
 alias 'egrep=egrep --color=auto'
 alias "a=awk {'print \$2'}"
@@ -82,3 +83,10 @@ alias cas='ssh -t mod01 "/iad/common/apps/cassandra/bin/cqlsh cassandra01.finn.n
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 
 alias oc='sudo openconnect --juniper gate.schibsted.no'
+
+alias alert_smoke='for h in alert12 alert21 alert22; do echo "running smoketest on $h"; ssh $h "iad finn search-alertserver smoketest --report-to-pipeline"; done; echo "running smoketest on $h"; ssh alert11 "iad finn search-pushnotifier smoketest --report-to-pipeline";'
+alias tail_push='ssh alert11 tail -F /iad/finn/search-pushnotifier/logs/search-pushnotifier.log'
+alias tail_push_mon='ssh alert11 tail -F /iad/finn/search-pushnotifier/logs/search-pushnotifier.log | grep --line-buffered monitor'
+alias tail_front='dsh --file ~/.dsh/searchfront -M -r ssh -Mc -- tail -F /iad/finn/search-front/logs/search-front.log'
+alias tail_alert='dsh --file ~/.dsh/alertserver -M -r ssh -Mc -- "tail -F /iad/finn/search-alertserver/logs/search-alertserver.log | egrep --line-buffered -v \"matched|monitor|SearchEvent|Got solrDoc\""'
+alias tail_alert_mon='dsh --file ~/.dsh/alertserver -M -r ssh -Mc -- "tail -F /iad/finn/search-alertserver/logs/search-alertserver.log | grep --line-buffered monitor"'

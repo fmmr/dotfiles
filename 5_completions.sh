@@ -42,3 +42,9 @@ _set_listbranches() {
 }
 
 complete -F _set_listbranches branch
+
+# The next line enables shell command completion for gcloud.
+if [ -f /usr/local/google-cloud-sdk/completion.bash.inc ]; then
+  source '/usr/local/google-cloud-sdk/completion.bash.inc'
+fi
+eval "$(kubectl completion bash)"

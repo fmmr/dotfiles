@@ -16,3 +16,8 @@ export PATH=$PATH:/opt/finnbuild/latest/bin/
 #export PATH=$PATH:/usr/local/mongodb/bin
 #export PATH=$PATH:/usr/local/node/bin
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /usr/local/google-cloud-sdk/path.bash.inc ]; then
+  source '/usr/local/google-cloud-sdk/path.bash.inc'
+fi
+
