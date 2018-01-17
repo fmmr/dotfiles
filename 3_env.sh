@@ -55,6 +55,8 @@ export GIT_SSL_NO_VERIFY=true
 eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 
 export PROJ_DIR=$HOME/projects
-export WORK_DIR=$HOME/finn
+export WORK_DIR="$HOME/projects $HOME/finn"
 export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix nvm)/nvm.sh"
+
+export GROUP=fmr_tester_

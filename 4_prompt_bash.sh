@@ -101,3 +101,4 @@ bash_prompt() {
 		PS1="$RIGHT$LEFT\$$WHEREPROMPT "
 }
 PROMPT_COMMAND=bash_prompt
+
