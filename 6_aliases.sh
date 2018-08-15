@@ -108,3 +108,4 @@ alias deploy_solr_master='cd ~/finn/tool/ops-utils/puppet; git pull; finn_env=pr
 alias kubetail='kubetail -b --jq "\"[\" + .[\"@timestamp\"] + \"] \" + .message" -z 2,7,8'
 alias noping='sudo noping'
 alias oping='sudo oping'
+alias p='ping_host.sh'

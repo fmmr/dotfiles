@@ -10,6 +10,7 @@ export PATH=$PATH:/usr/local/libimobiledevice-macosx
 export PATH=$PATH:/opt/finnbuild/latest/bin
 export PATH=$PATH:/Users/frerodla/bin/finn/misc_k8s
 export PATH=$PATH:/opt/oping/bin
+export PATH=$PATH:$HOME/projects/quickcommands
 
 #export	PATH=/Applications/Sybase/System/OCS-12_5/bin:/Applications/Sybase/System/ASE-12_5/bin:$PATH
 #export PATH=$PATH:$HOME/.rvm/bin
