@@ -27,6 +27,16 @@ _set_gitrepository() {
 complete -F _set_gitrepository cg
 
 
+_set_search_pods() {
+	local cur
+	cur=${COMP_WORDS[COMP_CWORD]}
+	COMPREPLY=( $( compgen -W '$( cat ~/.dotfiles/X_priv_not_sourced/search_pods )' $cur ))
+}
+
+
+complete -F _set_search_pods m
+complete -F _set_search_pods kt
+
 
 # Function to checkout branches, uses _set_listbranches-TC
 branch() {

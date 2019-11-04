@@ -11,15 +11,16 @@ export MAVEN_HOME=$HOME/.m2
 #export MAVEN_OPTS="-d64 -server -Xmx1200m -Xms256m -Djava.awt.headless=true"
 
 export EDITOR="nano"
+export LESSEDIT='mate -l %lm %f'
 export FPP_EDITOR="mate"
 
-/usr/libexec/java_home -v 1.8 > /dev/null  2>&1
+/usr/libexec/java_home -v 11 > /dev/null  2>&1
 if [ $? -eq 0 ]; then
-	export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+	export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 else
-	/usr/libexec/java_home -v 1.7 > /dev/null  2>&1
+	/usr/libexec/java_home -v 1.8 > /dev/null  2>&1
 	if [ $? -eq 0 ]; then
-		export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+		export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 	else
 		export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
 	fi
@@ -44,7 +45,7 @@ export	SYBASE_OCS=OCS-12_5
 export	DSQUERY=SYBASE
 
 export HISTFILESIZE=-1
-export HISTSIZE=-1
+export HISTSIZE=1000000
 export HISTCONTROL=ignoreboth
 export GIT_SSL_NO_VERIFY=true
 
@@ -52,7 +53,7 @@ export GIT_SSL_NO_VERIFY=true
 
 #export DYLD_LIBRARY_PATH=/usr/local/libimobiledevice-macosx
 
-eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+#eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 
 export PROJ_DIR=$HOME/projects
 export WORK_DIR="$HOME/projects $HOME/finn"

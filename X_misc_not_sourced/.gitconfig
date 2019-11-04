@@ -13,8 +13,9 @@ wd = diff --word-diff
 backone = reset --hard HEAD~1
 co = checkout
 ci = commit -a
-	amend = commit --amend
-	hard = reset --hard
+amend = commit --amend
+hard = reset --hard
+taglog = log --tags --simplify-by-decoration --pretty='format:%ct %D'
 
 [core]
 	autocrlf = input
