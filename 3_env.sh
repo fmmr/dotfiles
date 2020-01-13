@@ -14,9 +14,9 @@ export EDITOR="nano"
 export LESSEDIT='mate -l %lm %f'
 export FPP_EDITOR="mate"
 
-/usr/libexec/java_home -v 11 > /dev/null  2>&1
+/usr/libexec/java_home -v 13 > /dev/null  2>&1
 if [ $? -eq 0 ]; then
-	export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+	export JAVA_HOME=$(/usr/libexec/java_home -v 13)
 else
 	/usr/libexec/java_home -v 1.8 > /dev/null  2>&1
 	if [ $? -eq 0 ]; then
