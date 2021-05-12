@@ -14,14 +14,18 @@ fi
 
 # Function to quick cd to git repositories, uses _set_gitrepository-TC
 cg() {
-	D=`find $WORK_DIR -type d -name "*.git" -maxdepth 3 | grep $1 |head -1`"/.."
-	builtin cd $D
+	for dir in $WORK_DIR; do
+		if [ -d "$dir/$1" ]; then
+			builtin cd "$dir/$1"
+			break
+		fi
+	done
 }
 
 _set_gitrepository() {
 	local cur
 	cur=${COMP_WORDS[COMP_CWORD]}
-	COMPREPLY=( $( compgen -W '$( find $WORK_DIR -type d -name "*.git" -maxdepth 3 | sed -e "s/.*\/\(.*\)\/.git/\1/" )' $cur ))
+	COMPREPLY=( $( compgen -W '$PROJECT_DIRS' $cur ))
 }
 
 complete -F _set_gitrepository cg
@@ -93,3 +97,5 @@ if [ -f /usr/local/google-cloud-sdk/completion.bash.inc ]; then
 fi
 eval "$(kubectl completion bash)"
 
+
+source <(kaf completion bash)

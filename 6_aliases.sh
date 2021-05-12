@@ -24,9 +24,14 @@ alias 'ff=find . -type f -name '
 alias 'j6=export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)'
 alias 'j7=export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)'
 alias 'j8=export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
+alias 'j10=export JAVA_HOME=$(/usr/libexec/java_home -v 10)'
 alias 'j11=export JAVA_HOME=$(/usr/libexec/java_home -v 11)'
 alias 'j12=export JAVA_HOME=$(/usr/libexec/java_home -v 12)'
 alias 'j13=export JAVA_HOME=$(/usr/libexec/java_home -v 13)'
+alias 'j14=export JAVA_HOME=$(/usr/libexec/java_home -v 14)'
+alias 'j15=export JAVA_HOME=$(/usr/libexec/java_home -v 15)'
+alias 'j16=export JAVA_HOME=$(/usr/libexec/java_home -v 16)'
+
 alias 'kff=killall firefox firefox-bin'
 alias 'latest=tail -F ~/bin/log/latest'
 alias 'less=less -Mi'
@@ -114,3 +119,8 @@ alias oping='sudo oping'
 alias p='ping_host.sh'
 alias m='watch -d monitor_k8s.sh'
 alias mi='watch -d "monitor_k8s.sh search-docpop search-solpop search-docpop-trigger ad-facade"'
+alias workvpn='printf "Password#1 is from SMS\n\n"; sudo openconnect --protocol=nc gate.schibsted.no -u frerodla'
+
+# alias sshuttle_gcm='sshuttle -r kjell 10.216.0.0/16 10.218.0.0/16 10.219.16.0/24 10.219.17.0/24'
+alias useprod="kubectl config use-context gke_finn-fiaas-prod_europe-north1_finn-fiaas-prod-gke01"
+alias usedev="kubectl config use-context gke_finn-fiaas-dev_europe-north1_finn-fiaas-dev-gke01"
