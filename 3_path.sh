@@ -8,7 +8,7 @@ export PATH=$PATH:$PLAY_HOME
 export PATH=$PATH:$DOTFILES/9_in_path
 export PATH=$PATH:/usr/local/libimobiledevice-macosx
 export PATH=$PATH:/opt/finnbuild/latest/bin
-export PATH=$PATH:/Users/frerodla/bin/finn/misc_k8s
+export PATH=$PATH:$HOME/bin/finn/misc_k8s
 export PATH=$PATH:/opt/oping/bin
 export PATH=$PATH:$FINN_DIR/finn/ghe/quickcommands
 

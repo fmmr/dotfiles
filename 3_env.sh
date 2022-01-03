@@ -14,9 +14,9 @@ export EDITOR="nano"
 export LESSEDIT='mate -l %lm %f'
 export FPP_EDITOR="mate"
 
-/usr/libexec/java_home -v 15 > /dev/null  2>&1
+/usr/libexec/java_home -v 17 > /dev/null  2>&1
 if [ $? -eq 0 ]; then
-	export JAVA_HOME=$(/usr/libexec/java_home -v 15)
+	export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 else
 	/usr/libexec/java_home -v 15 > /dev/null  2>&1
 	if [ $? -eq 0 ]; then
@@ -59,3 +59,4 @@ export NVM_DIR="$HOME/.nvm"
 export GROUP=fmr_tester_
 export USERNAME=$USER
 export PUPPETROOT=/Users/frerodla/finn/tool/puppetroot
+export FINN_ENV=prod

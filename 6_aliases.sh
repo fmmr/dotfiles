@@ -31,6 +31,7 @@ alias 'j13=export JAVA_HOME=$(/usr/libexec/java_home -v 13)'
 alias 'j14=export JAVA_HOME=$(/usr/libexec/java_home -v 14)'
 alias 'j15=export JAVA_HOME=$(/usr/libexec/java_home -v 15)'
 alias 'j16=export JAVA_HOME=$(/usr/libexec/java_home -v 16)'
+alias 'j17=export JAVA_HOME=$(/usr/libexec/java_home -v 17)'
 
 alias 'kff=killall firefox firefox-bin'
 alias 'latest=tail -F ~/bin/log/latest'
@@ -67,7 +68,6 @@ alias 'lt=ls -ltr'
 for i in `grep "^Host" ~/.ssh/config | grep -v "Host \*" | awk '{print $2, $3, $4, $5, $6, $7, $8}'`; do alias $i="ssh $i"; done
 
 # CD-ing
-alias 'finn=cd /Users/frerodla/finn/iad/iad'
 alias 'fjalar=cd /Users/frerodla/finn/search/search-fjalar'
 alias 'repo=cd /Users/frerodla/finn/repo'
 alias 'search=cd /Users/frerodla/finn/search'
@@ -124,3 +124,4 @@ alias workvpn='printf "Password#1 is from SMS\n\n"; sudo openconnect --protocol=
 # alias sshuttle_gcm='sshuttle -r kjell 10.216.0.0/16 10.218.0.0/16 10.219.16.0/24 10.219.17.0/24'
 alias useprod="kubectl config use-context gke_finn-fiaas-prod_europe-north1_finn-fiaas-prod-gke01"
 alias usedev="kubectl config use-context gke_finn-fiaas-dev_europe-north1_finn-fiaas-dev-gke01"
+alias search_alerts="curl http://io-fiaas-prometheus-vma.obs.prod.finn.no:8080/api/v1/groups -s | jq '.data.groups[].alerting_rules[] | select(.labels.owner==\"search\")'"

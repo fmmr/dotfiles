@@ -99,3 +99,4 @@ eval "$(kubectl completion bash)"
 
 
 source <(kaf completion bash)
+FINN_AC_BASH_SETUP_PATH=/Users/frerodla/Library/Caches/finn/autocomplete/bash_setup && test -f $FINN_AC_BASH_SETUP_PATH && source $FINN_AC_BASH_SETUP_PATH; # finn autocomplete setup
