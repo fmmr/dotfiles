@@ -1,6 +1,10 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+. "$(brew --prefix nvm)/nvm.sh"
+
 export PATH=$HOME/bin:$HOME/bin/finn:$HOME/bin/ferdig:$HOME/bin/maisen:$HOME/bin/rod:$HOME/bin/finn:$HOME/bin/backup:$PATH
 export PATH=$PATH:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/libexec:/root/bin
 export PATH=$PATH:/usr/local/node/bin
+export PATH=/usr/local/bin/maven/bin/:$PATH
 export PATH=$PATH:$HADOOP_HOME/bin
 export PATH=$PATH:$SCALA_HOME/bin
 export PATH=$PATH:$M2:$JAVA_HOME/bin

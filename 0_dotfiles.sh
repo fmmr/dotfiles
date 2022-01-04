@@ -1,3 +1,5 @@
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 DOTFILES=$HOME/.dotfiles
 #eval "$(rbenv init -)"
 ls $DOTFILES/0_pre/* >/dev/null 2>&1

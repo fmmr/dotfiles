@@ -122,6 +122,6 @@ alias mi='watch -d "monitor_k8s.sh search-docpop search-solpop search-docpop-tri
 alias workvpn='printf "Password#1 is from SMS\n\n"; sudo openconnect --protocol=nc gate.schibsted.no -u frerodla'
 
 # alias sshuttle_gcm='sshuttle -r kjell 10.216.0.0/16 10.218.0.0/16 10.219.16.0/24 10.219.17.0/24'
-alias useprod="kubectl config use-context gke_finn-fiaas-prod_europe-north1_finn-fiaas-prod-gke01"
-alias usedev="kubectl config use-context gke_finn-fiaas-dev_europe-north1_finn-fiaas-dev-gke01"
+alias useprod="kubectl config use-context finn-fiaas-prod-gke01"
+alias usedev="kubectl config use-context finn-fiaas-dev-gke01"
 alias search_alerts="curl http://io-fiaas-prometheus-vma.obs.prod.finn.no:8080/api/v1/groups -s | jq '.data.groups[].alerting_rules[] | select(.labels.owner==\"search\")'"

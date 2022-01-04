@@ -54,7 +54,6 @@ export FINN_DIR=$HOME/finn/ghe
 export WORK_DIR="$FINN_DIR $PROJ_DIR"
 export PROJECT_DIRS=`find $WORK_DIR -type d -name "*.git" -maxdepth 2 | sed -e "s/.*\/\(.*\)\/.git/\1/"`
 export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
 
 export GROUP=fmr_tester_
 export USERNAME=$USER
