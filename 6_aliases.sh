@@ -125,3 +125,4 @@ alias workvpn='printf "Password#1 is from SMS\n\n"; sudo openconnect --protocol=
 alias useprod="kubectl config use-context finn-fiaas-prod-gke01"
 alias usedev="kubectl config use-context finn-fiaas-dev-gke01"
 alias search_alerts="curl http://io-fiaas-prometheus-vma.obs.prod.finn.no:8080/api/v1/groups -s | jq '.data.groups[].alerting_rules[] | select(.labels.owner==\"search\")'"
+alias tree="mvn dependency:tree"

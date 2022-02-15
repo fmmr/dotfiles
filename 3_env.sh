@@ -44,7 +44,7 @@ export	DSQUERY=SYBASE
 
 export HISTFILESIZE=-1
 export HISTSIZE=1000000
-export HISTCONTROL=ignoreboth
+export HISTCONTROL=ignoredups
 export GIT_SSL_NO_VERIFY=true
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
