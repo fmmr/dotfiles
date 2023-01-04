@@ -59,3 +59,4 @@ export GROUP=fmr_tester_
 export USERNAME=$USER
 export PUPPETROOT=/Users/frerodla/finn/tool/puppetroot
 export FINN_ENV=prod
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True

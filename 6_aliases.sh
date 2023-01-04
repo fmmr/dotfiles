@@ -21,17 +21,14 @@ alias 'f=tail -f $HOME/procmail/watch_mail.log $HOME/procmail/.accept* $HOME/pro
 alias 'fd=find . -type d -name '
 alias 'ff=find . -type f -name '
 
-alias 'j6=export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)'
-alias 'j7=export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)'
 alias 'j8=export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
-alias 'j10=export JAVA_HOME=$(/usr/libexec/java_home -v 10)'
 alias 'j11=export JAVA_HOME=$(/usr/libexec/java_home -v 11)'
-alias 'j12=export JAVA_HOME=$(/usr/libexec/java_home -v 12)'
-alias 'j13=export JAVA_HOME=$(/usr/libexec/java_home -v 13)'
-alias 'j14=export JAVA_HOME=$(/usr/libexec/java_home -v 14)'
 alias 'j15=export JAVA_HOME=$(/usr/libexec/java_home -v 15)'
-alias 'j16=export JAVA_HOME=$(/usr/libexec/java_home -v 16)'
 alias 'j17=export JAVA_HOME=$(/usr/libexec/java_home -v 17)'
+alias 'j18=export JAVA_HOME=$(/usr/libexec/java_home -v 18)'
+alias 'j19=export JAVA_HOME=$(/usr/libexec/java_home -v 19)'
+alias 'j20=export JAVA_HOME=$(/usr/libexec/java_home -v 20)'
+alias 'j21=export JAVA_HOME=$(/usr/libexec/java_home -v 21)'
 
 alias 'kff=killall firefox firefox-bin'
 alias 'latest=tail -F ~/bin/log/latest'
@@ -126,3 +123,5 @@ alias useprod="kubectl config use-context finn-fiaas-prod-gke01"
 alias usedev="kubectl config use-context finn-fiaas-dev-gke01"
 alias search_alerts="curl http://io-fiaas-prometheus-vma.obs.prod.finn.no:8080/api/v1/groups -s | jq '.data.groups[].alerting_rules[] | select(.labels.owner==\"search\")'"
 alias tree="mvn dependency:tree"
+alias m_cloud='watch -d /Users/fmr/bin/finn/misc_k8s/monitor_cloud.sh'
+alias rub='scp /Users/fmr/finn/ghe/search-breadcrumb/src/test/rubik.html  zpikesgj@rodland.no:rodland.no/public_html'
