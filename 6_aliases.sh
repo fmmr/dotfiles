@@ -1,12 +1,16 @@
 #kubectl stuff
 
 alias 'k=kubectl'
-alias 'ks=kubectl -n kube-system'
+alias 'ks=kubectl -n search'
 alias 'klog=kubectl logs --tail 10 -f'
+alias 'kslog=ks logs --tail 10 -f'
 alias 'kpod=k get pod'
 alias 'kspod=ks get pod'
 alias 'kgrep=kpod -o wide | grep'
 alias 'ksgrep=kspod  -o wide | grep'
+alias m='watch -d monitor_k8s.sh'
+alias ms='NAMESPACE=search watch -d monitor_k8s.sh'
+alias mi='watch -d "monitor_k8s.sh search-docpop search-solpop search-docpop-trigger ad-facade"'
 
 alias 'histgrep=history | grep'
 alias 'tar=gtar'
@@ -114,9 +118,6 @@ alias kubetail='kubetail -b --jq "\"[\" + .[\"@timestamp\"] + \"] \" + .message"
 alias noping='sudo noping'
 alias oping='sudo oping'
 alias p='ping_host.sh'
-alias m='watch -d monitor_k8s.sh'
-alias mi='watch -d "monitor_k8s.sh search-docpop search-solpop search-docpop-trigger ad-facade"'
-alias workvpn='printf "Password#1 is from SMS\n\n"; sudo openconnect --protocol=nc gate.schibsted.no -u frerodla'
 
 # alias sshuttle_gcm='sshuttle -r kjell 10.216.0.0/16 10.218.0.0/16 10.219.16.0/24 10.219.17.0/24'
 alias useprod="kubectl config use-context finn-fiaas-prod-gke01"
