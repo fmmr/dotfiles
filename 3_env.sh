@@ -14,18 +14,27 @@ export EDITOR="nano"
 export LESSEDIT='mate -l %lm %f'
 export FPP_EDITOR="mate"
 
-/usr/libexec/java_home -v 17 > /dev/null  2>&1
+/usr/libexec/java_home -v 23 > /dev/null  2>&1
 if [ $? -eq 0 ]; then
-	export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+	export JAVA_HOME=$(/usr/libexec/java_home -v 23)
 else
-	/usr/libexec/java_home -v 15 > /dev/null  2>&1
+	/usr/libexec/java_home -v 22 > /dev/null  2>&1
 	if [ $? -eq 0 ]; then
-		export JAVA_HOME=$(/usr/libexec/java_home -v 15)
+		export JAVA_HOME=$(/usr/libexec/java_home -v 22)
 	else
-		export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+		/usr/libexec/java_home -v 21 > /dev/null  2>&1
+		if [ $? -eq 0 ]; then
+			export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+		else
+			/usr/libexec/java_home -v 17 > /dev/null  2>&1
+			if [ $? -eq 0 ]; then
+				export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+			else
+				export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+			fi
+		fi
 	fi
 fi
-
 export IDEA_JDK=$JAVA_HOME
 
 export HADOOP_HOME=/usr/local/hadoop
@@ -60,3 +69,20 @@ export USERNAME=$USER
 export PUPPETROOT=/Users/frerodla/finn/tool/puppetroot
 export FINN_ENV=prod
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+function pgforward() {
+    pgcluster=$1
+    shift
+    port=$1
+    shift
+    kubectl port-forward -n postgresql $(kubectl get pods -n postgresql -o custom-columns=:metadata.name --field-selector status.podIP=$(kubectl -n postgresql get endpoints $pgcluster -o go-template='{{ (index (index .subsets 
+0).addresses 0).ip }}')) $port:5432
+}
+
+# Claude code use vertex
+export CLAUDE_CODE_USE_VERTEX=1
+export CLOUD_ML_REGION="us-east5"
+#export CLOUD_ML_REGION="europe-west-4"
+export ANTHROPIC_VERTEX_PROJECT_ID="ai-unit-441410"
+export ANTHROPIC_MODEL="claude-sonnet-4@20250514"
+export AWS_PROFILE=ai-unit-dev
+

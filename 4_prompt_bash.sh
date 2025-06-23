@@ -23,6 +23,16 @@ function git_prompt() {
   fi
 }
 
+__kube_ps1()
+{
+    # Get current context
+    CONTEXT=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
+
+    if [ -n "$CONTEXT" ]; then
+        echo " k: ${CONTEXT}" | sed -e 's/finn-fiaas-prod-gke01/F_PROD/g' -e 's/nmp-rc-toripg-apps-gke01/T_PG/g'  -e 's/finn-fiaas-dev-gke01/F_DEV/g'
+    fi
+}
+
 # function num_files_prompt(){
 # 	NUM_FILES=`ls | wc -l | tr -d ' '` 
 # 	echo "$FWHT"f"$RS:$NUM_FILES"
@@ -82,6 +92,7 @@ function version_prompt(){
 bash_prompt() {
 		NUMFILESPROMPT=""
 		GITPROMPT=$(git_prompt)
+		KPROMPT=$(__kube_ps1)
 		RUBYPROMPT=$(version_prompt r "rb|\.feature" "ruby -v" ruby 2)
 		JAVAPROMPT=$(version_prompt j "java|pom.xml" "java -version" version 3 "[0-9]+\.[0-9]+")
 		SCALAPROMPT=$(version_prompt s scala "scala -version" version 5)
@@ -91,7 +102,7 @@ bash_prompt() {
 		WHOPROMPT="$FWHT"w"$RS:\\\u"
 		#compensate=3
     	#PS1=$(printf "%*s\r%s\$ " "$(($(tput cols)+${compensate}))" "$RIGHT" "$LEFT")
-		RIGHT=`echo -e "$RT$FGRY[\A]$RS" $HOST_PROMPT_COLOR${COMP}$RS $NUMFILESPROMPT $WHOPROMPT $JAVAPROMPT $SCALAPROMPT $RUBYPROMPT $GITPROMPT $PATHPROMPT`
+		RIGHT=`echo -e "$RT$FGRY[\A]$RS" $HOST_PROMPT_COLOR${COMP}$RS $NUMFILESPROMPT $WHOPROMPT $JAVAPROMPT $SCALAPROMPT $RUBYPROMPT $GITPROMPT $KPROMPT $PATHPROMPT`
 		if [ "z$PROMPT_TWO_LINES" = "z1" ]; then
 			RIGHT="╭  $RIGHT"
 			LEFT=`echo -e "\n╰  $RT"`

@@ -10,7 +10,19 @@ alias 'kgrep=kpod -o wide | grep'
 alias 'ksgrep=kspod  -o wide | grep'
 alias m='watch -d monitor_k8s.sh'
 alias ms='NAMESPACE=search watch -d monitor_k8s.sh'
+alias mss='watch -d monitor_solr.sh'
 alias mi='watch -d "monitor_k8s.sh search-docpop search-solpop search-docpop-trigger ad-facade"'
+
+alias usetoridev="kubectl config use-context nmp-rc-toripg-apps-gke01"
+alias usetoriprod="kubectl config use-context nmp-rc-i01-apps-gke01"
+alias useprod="kubectl config use-context finn-fiaas-prod-gke01"
+alias usedev="kubectl config use-context finn-fiaas-dev-gke01"
+alias usefinnprod="kubectl config use-context finn-fiaas-prod-gke01"
+alias usefinndev="kubectl config use-context finn-fiaas-dev-gke01"
+alias usedbaprod="kubectl config use-context dk-prod-i006"
+alias usedbadev="kubectl config use-context nmp-i002"
+alias useblocketprod="kubectl config use-context se-prod-i009"
+alias useblocketdev="kubectl config use-context se-dev-i007"
 
 alias 'histgrep=history | grep'
 alias 'tar=gtar'
@@ -25,7 +37,8 @@ alias 'f=tail -f $HOME/procmail/watch_mail.log $HOME/procmail/.accept* $HOME/pro
 alias 'fd=find . -type d -name '
 alias 'ff=find . -type f -name '
 
-alias 'j8=export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
+alias 'j8=export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)'
+alias 'j1.8=export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)'
 alias 'j11=export JAVA_HOME=$(/usr/libexec/java_home -v 11)'
 alias 'j15=export JAVA_HOME=$(/usr/libexec/java_home -v 15)'
 alias 'j17=export JAVA_HOME=$(/usr/libexec/java_home -v 17)'
@@ -33,6 +46,8 @@ alias 'j18=export JAVA_HOME=$(/usr/libexec/java_home -v 18)'
 alias 'j19=export JAVA_HOME=$(/usr/libexec/java_home -v 19)'
 alias 'j20=export JAVA_HOME=$(/usr/libexec/java_home -v 20)'
 alias 'j21=export JAVA_HOME=$(/usr/libexec/java_home -v 21)'
+alias 'j22=export JAVA_HOME=$(/usr/libexec/java_home -v 22)'
+alias 'j23=export JAVA_HOME=$(/usr/libexec/java_home -v 23)'
 
 alias 'kff=killall firefox firefox-bin'
 alias 'latest=tail -F ~/bin/log/latest'
@@ -118,11 +133,12 @@ alias kubetail='kubetail -b --jq "\"[\" + .[\"@timestamp\"] + \"] \" + .message"
 alias noping='sudo noping'
 alias oping='sudo oping'
 alias p='ping_host.sh'
+alias p23='ping_host.sh r23'
+alias p232="grep r23 /etc/hosts | awk {'print \$2'} | tr '\n' ' ' | sed 's/$/ localhost vg.no/' | xargs multiping"
 
 # alias sshuttle_gcm='sshuttle -r kjell 10.216.0.0/16 10.218.0.0/16 10.219.16.0/24 10.219.17.0/24'
-alias useprod="kubectl config use-context finn-fiaas-prod-gke01"
-alias usedev="kubectl config use-context finn-fiaas-dev-gke01"
 alias search_alerts="curl http://io-fiaas-prometheus-vma.obs.prod.finn.no:8080/api/v1/groups -s | jq '.data.groups[].alerting_rules[] | select(.labels.owner==\"search\")'"
 alias tree="mvn dependency:tree"
 alias m_cloud='watch -d /Users/fmr/bin/finn/misc_k8s/monitor_cloud.sh'
-alias rub='scp /Users/fmr/finn/ghe/search-breadcrumb/src/test/rubik.html  zpikesgj@rodland.no:rodland.no/public_html'
+alias rub='scp /Users/fmr/finn/ghe/search-breadcrumb/src/test/rubik.html  coz7cgr90_zpikesgj@ssh.coz7cgr90.service.one:/webroots/r1098183/'
+alias drimonscp='scp /Users/fmr/projects/drivhus/html/* coz7cgr90_zpikesgj@ssh.coz7cgr90.service.one:/webroots/r1098183/drimon/'
