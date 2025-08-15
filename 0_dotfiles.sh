@@ -13,6 +13,12 @@ fi
 . $DOTFILES/1_settings.sh
 . $DOTFILES/3_env.sh
 . $DOTFILES/3_path.sh
+
+# K8s tools (from ~/bin/k8s if available)
+[ -f "$HOME/bin/k8s/k8s_prompt.sh" ] && . "$HOME/bin/k8s/k8s_prompt.sh"
+[ -f "$HOME/bin/k8s/k8s_completions.sh" ] && . "$HOME/bin/k8s/k8s_completions.sh"
+[ -f "$HOME/bin/k8s/k8s_aliases.sh" ] && . "$HOME/bin/k8s/k8s_aliases.sh"
+
 . $DOTFILES/4_prompt_bash.sh
 . $DOTFILES/5_completions.sh
 . $DOTFILES/6_aliases.sh

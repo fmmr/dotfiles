@@ -61,41 +61,14 @@ _set_listbranches() {
 
 
 
-# made with make-completion-wrapper:
-#function make-completion-wrapper () {
-#  local function_name="$2"
-#  local arg_count=$(($#-3))
-#  local comp_function_name="$1"
-#  shift 2
-#  local function="
-#    function $function_name {
-#      ((COMP_CWORD+=$arg_count))
-#      COMP_WORDS=( "$@" \${COMP_WORDS[@]:1} )
-#      "$comp_function_name"
-#      return 0
-#    }"
-#  eval "$function"
-#  echo $function_name
-#  echo "$function"
-#}
-# make-completion-wrapper __start_kubectl _kubectl_for_k kubectl
-function _kubectl_for_k {
-  ((COMP_CWORD+=0))
-  COMP_WORDS=( kubectl ${COMP_WORDS[@]:1} )
-  __start_kubectl
-  return 0
-}
-complete -F _kubectl_for_k k ks
-
 complete -F _set_listbranches branch
-
-
 
 # The next line enables shell command completion for gcloud.
 if [ -f /usr/local/google-cloud-sdk/completion.bash.inc ]; then
   source '/usr/local/google-cloud-sdk/completion.bash.inc'
 fi
-eval "$(kubectl completion bash)"
+
+# kubectl completion moved to k8s_completions.sh for better performance
 
 FINN_AC_BASH_SETUP_PATH=/Users/fmr/Library/Caches/finn/autocomplete/bash_setup && test -f $FINN_AC_BASH_SETUP_PATH && source $FINN_AC_BASH_SETUP_PATH; # finn autocomplete setup
 

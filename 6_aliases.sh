@@ -1,28 +1,30 @@
 #kubectl stuff
 
-alias 'k=kubectl'
-alias 'ks=kubectl -n search'
-alias 'klog=kubectl logs --tail 10 -f'
-alias 'kslog=ks logs --tail 10 -f'
-alias 'kpod=k get pod'
-alias 'kspod=ks get pod'
-alias 'kgrep=kpod -o wide | grep'
-alias 'ksgrep=kspod  -o wide | grep'
-alias m='watch -d monitor_k8s.sh'
-alias ms='NAMESPACE=search watch -d monitor_k8s.sh'
-alias mss='watch -d monitor_solr.sh'
-alias mi='watch -d "monitor_k8s.sh search-docpop search-solpop search-docpop-trigger ad-facade"'
-
-alias usetoridev="kubectl config use-context nmp-rc-toripg-apps-gke01"
-alias usetoriprod="kubectl config use-context nmp-rc-i01-apps-gke01"
-alias useprod="kubectl config use-context finn-fiaas-prod-gke01"
-alias usedev="kubectl config use-context finn-fiaas-dev-gke01"
-alias usefinnprod="kubectl config use-context finn-fiaas-prod-gke01"
-alias usefinndev="kubectl config use-context finn-fiaas-dev-gke01"
-alias usedbaprod="kubectl config use-context dk-prod-i006"
-alias usedbadev="kubectl config use-context nmp-i002"
-alias useblocketprod="kubectl config use-context se-prod-i009"
-alias useblocketdev="kubectl config use-context se-dev-i007"
+# alias 'k=kubectl'
+# alias 'kpodh=kubectl get pods -n horizontal | grep '
+# alias 'kpodp=kubectl get pods -n platform | grep '
+# alias 'ks=kubectl -n search'
+# alias 'klog=kubectl logs --tail 10 -f'
+# alias 'kslog=ks logs --tail 10 -f'
+# alias 'kpod=k get pod'
+# alias 'kspod=ks get pod'
+# alias 'kgrep=kpod -o wide | grep'
+# alias 'ksgrep=kspod  -o wide | grep'
+# 
+# alias m='watch -d monitor_k8s.sh'
+# alias ms='NAMESPACE=search watch -d monitor_k8s.sh'
+# alias mss='watch -d monitor_solr.sh'
+# alias mi='watch -d "monitor_k8s.sh search-docpop search-solpop search-docpop-trigger ad-facade"'
+# 
+# alias use="kubectl config current-context"
+# alias useblocketdev="kubectl config use-context blocket-dev"
+# alias useblocketprod="kubectl config use-context blocket-prod"
+# alias usedbadev="kubectl config use-context dba-dev"
+# alias usedbaprod="kubectl config use-context dba-prod"
+# alias usefinndev="kubectl config use-context finn-fiaas-dev"
+# alias usefinnprod="kubectl config use-context finn-fiaas-prod"
+# alias usetoridev="kubectl config use-context tori-dev"
+# alias usetoriprod="kubectl config use-context tori-prod"
 
 alias 'histgrep=history | grep'
 alias 'tar=gtar'
@@ -57,7 +59,7 @@ alias 'mvnsd=mvn -T 1C -DdownloadSources=true -DdownloadJavadocs=true'
 alias 'mci=mvn -T 1C clean install'
 alias 'md=mkdir'
 alias 'nano=nano -w'
-alias 'ns=nslookup -sil'
+# alias 'ns=nslookup -sil'
 alias 'openpom=open -a /Applications/idea pom.xml'
 alias 'pico=nano -w'
 alias 'rd=rmdir'
@@ -134,7 +136,7 @@ alias noping='sudo noping'
 alias oping='sudo oping'
 alias p='ping_host.sh'
 alias p23='ping_host.sh r23'
-alias p232="grep r23 /etc/hosts | awk {'print \$2'} | tr '\n' ' ' | sed 's/$/ localhost vg.no/' | xargs multiping"
+alias p232="grep r23 /etc/hosts | awk {'print \$2'} | tr '\n' ' ' | sed 's/$/ localhost vg.no/' | xargs multiping 2>/dev/null"
 
 # alias sshuttle_gcm='sshuttle -r kjell 10.216.0.0/16 10.218.0.0/16 10.219.16.0/24 10.219.17.0/24'
 alias search_alerts="curl http://io-fiaas-prometheus-vma.obs.prod.finn.no:8080/api/v1/groups -s | jq '.data.groups[].alerting_rules[] | select(.labels.owner==\"search\")'"
@@ -142,3 +144,7 @@ alias tree="mvn dependency:tree"
 alias m_cloud='watch -d /Users/fmr/bin/finn/misc_k8s/monitor_cloud.sh'
 alias rub='scp /Users/fmr/finn/ghe/search-breadcrumb/src/test/rubik.html  coz7cgr90_zpikesgj@ssh.coz7cgr90.service.one:/webroots/r1098183/'
 alias drimonscp='scp /Users/fmr/projects/drivhus/html/* coz7cgr90_zpikesgj@ssh.coz7cgr90.service.one:/webroots/r1098183/drimon/'
+alias claude="/Users/fmr/.claude/local/claude"
+
+alias pi="ssh pi"
+alias pi_reboot='ssh pi "sudo reboot"'

@@ -4,3 +4,4 @@
 !/1_settings/.do_not_remove
 X_priv_not_sourced/*
 !/X_priv_not_sourced/.do_not_remove
+.claude/

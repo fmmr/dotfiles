@@ -8,6 +8,7 @@ UL="\[\033[4m\]"    # underline
 INV="\[\033[7m\]"   # inverse background and foreground
 FBLK="\[\033[30m\]" # foreground black
 FRED="\[\033[31m\]" # foreground red
+FLRED="\[\033[0;91m\]" # foreground red
 FGRN="\[\033[32m\]" # foreground green
 FYEL="\[\033[33m\]" # foreground yellow
 FORA="\[\033[01;33m\]" # foreground orange
