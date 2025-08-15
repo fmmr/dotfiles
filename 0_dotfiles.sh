@@ -18,6 +18,7 @@ fi
 [ -f "$HOME/bin/k8s/k8s_prompt.sh" ] && . "$HOME/bin/k8s/k8s_prompt.sh"
 [ -f "$HOME/bin/k8s/k8s_completions.sh" ] && . "$HOME/bin/k8s/k8s_completions.sh"
 [ -f "$HOME/bin/k8s/k8s_aliases.sh" ] && . "$HOME/bin/k8s/k8s_aliases.sh"
+[ -f "$HOME/bin/k8s/k8s_functions.sh" ] && . "$HOME/bin/k8s/k8s_functions.sh"
 
 . $DOTFILES/4_prompt_bash.sh
 . $DOTFILES/5_completions.sh

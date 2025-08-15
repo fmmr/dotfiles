@@ -87,3 +87,6 @@ export ANTHROPIC_VERTEX_PROJECT_ID="nmp-pc-fraud-experimentation"
 #export ANTHROPIC_MODEL="claude-sonnet-4@20250514"
 export AWS_PROFILE=ai-unit-dev
 
+# K8s - prettier diffs for `kubectl diff`
+export KUBECTL_EXTERNAL_DIFF="colordiff -u" 2>/dev/null
+
