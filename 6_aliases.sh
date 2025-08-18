@@ -1,31 +1,3 @@
-#kubectl stuff
-
-# alias 'k=kubectl'
-# alias 'kpodh=kubectl get pods -n horizontal | grep '
-# alias 'kpodp=kubectl get pods -n platform | grep '
-# alias 'ks=kubectl -n search'
-# alias 'klog=kubectl logs --tail 10 -f'
-# alias 'kslog=ks logs --tail 10 -f'
-# alias 'kpod=k get pod'
-# alias 'kspod=ks get pod'
-# alias 'kgrep=kpod -o wide | grep'
-# alias 'ksgrep=kspod  -o wide | grep'
-# 
-# alias m='watch -d monitor_k8s.sh'
-# alias ms='NAMESPACE=search watch -d monitor_k8s.sh'
-# alias mss='watch -d monitor_solr.sh'
-# alias mi='watch -d "monitor_k8s.sh search-docpop search-solpop search-docpop-trigger ad-facade"'
-# 
-# alias use="kubectl config current-context"
-# alias useblocketdev="kubectl config use-context blocket-dev"
-# alias useblocketprod="kubectl config use-context blocket-prod"
-# alias usedbadev="kubectl config use-context dba-dev"
-# alias usedbaprod="kubectl config use-context dba-prod"
-# alias usefinndev="kubectl config use-context finn-fiaas-dev"
-# alias usefinnprod="kubectl config use-context finn-fiaas-prod"
-# alias usetoridev="kubectl config use-context tori-dev"
-# alias usetoriprod="kubectl config use-context tori-prod"
-
 alias 'histgrep=history | grep'
 alias 'tar=gtar'
 alias 'grep=grep --color=auto'
