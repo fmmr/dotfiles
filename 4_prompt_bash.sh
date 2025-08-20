@@ -6,19 +6,21 @@
 
 function git_prompt() {
   if git rev-parse --git-dir >/dev/null 2>&1; then
-		REV=$(git log --pretty=format:'%h' 2>&1| head -1)
-		if [ "$REV" == "fatal: bad default revision 'HEAD'" ]; then
-			echo "$FWHT"g"$RS:$FORA""No version$RS"
-		else
-			BRANCH=$(git branch 2>&1 | grep ^*|awk '{print $2}')
-			if [ "$BRANCH" == "(no" ]; then
-				BRANCH="$FORA""No branch$RS"
-			fi
-		
-			DIRTY=$(git status --porcelain 2>/dev/null | head -1)
-			[[ -n "$DIRTY" ]] && DIRTY="*" || DIRTY=""
-			echo "$FWHT"g"$RS:$COLOR$BRANCH, $REV$DIRTY$RS"
+		BRANCH=$(git branch 2>&1 | grep ^*|awk '{print $2}')
+		if [ "$BRANCH" == "(no" ]; then
+			BRANCH="${FORA}No branch$RS"
 		fi
+		
+		DIRTY=$(git status --porcelain 2>/dev/null | head -1)
+		if [[ -n "$DIRTY" ]]; then
+			DIRTY="*"
+			COLOR="$FLRED"
+		else
+			DIRTY=""
+			COLOR="$RS"
+		fi
+		
+		echo "$FWHT"g"$RS:$COLOR$BRANCH$DIRTY$RS"
   fi
 }
 
