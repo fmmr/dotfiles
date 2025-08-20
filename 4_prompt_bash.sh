@@ -82,7 +82,18 @@ function version_prompt(){
 bash_prompt() {
 		NUMFILESPROMPT=""
 		GITPROMPT=$(git_prompt)
-		KPROMPT=$(k8s_prompt)
+
+	  # First check if cache needs refresh (in main shell)
+	  local config_file="$HOME/.kube/config"
+	  if [[ -f "$config_file" ]]; then
+	      local config_mtime=$(stat -f %m "$config_file" 2>/dev/null || echo 0)
+	      if [[ $config_mtime -gt ${K8S_CONFIG_MTIME:-0} ]]; then
+	          refresh_k8s_cache
+	      fi
+	  fi
+	  # Then get the prompt output (no refresh logic needed in k8s_prompt anymore)
+	  KPROMPT=$(k8s_prompt)
+
 		RUBYPROMPT=$(version_prompt r "rb|\.feature" "ruby -v" ruby 2)
 		JAVAPROMPT=$(version_prompt j "java|pom.xml" "java -version" version 3 "[0-9]+\.[0-9]+")
 		SCALAPROMPT=$(version_prompt s scala "scala -version" version 5)

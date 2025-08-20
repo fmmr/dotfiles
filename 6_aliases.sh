@@ -120,3 +120,4 @@ alias claude="/Users/fmr/.claude/local/claude"
 
 alias pi="ssh pi"
 alias pi_reboot='ssh pi "sudo reboot"'
+alias dotsource='source $HOME/.dotfiles/0_dotfiles.sh'
