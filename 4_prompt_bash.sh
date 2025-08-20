@@ -24,6 +24,7 @@ function git_prompt() {
   fi
 }
 
+
 # function num_files_prompt(){
 # 	NUM_FILES=`ls | wc -l | tr -d ' '` 
 # 	echo "$FWHT"f"$RS:$NUM_FILES"
