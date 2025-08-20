@@ -20,6 +20,12 @@ function git_prompt() {
 			COLOR="$RS"
 		fi
 		
+		# Check for unpushed commits
+		AHEAD=$(git rev-list --count @{upstream}..HEAD 2>/dev/null)
+		if [[ -n "$AHEAD" && "$AHEAD" -gt 0 ]]; then
+			DIRTY="${DIRTY}↑${AHEAD}"
+		fi
+		
 		echo "$FWHT"g"$RS:$COLOR$BRANCH$DIRTY$RS"
   fi
 }
