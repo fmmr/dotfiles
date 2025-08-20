@@ -26,7 +26,7 @@ function git_prompt() {
 			DIRTY="${DIRTY}↑${AHEAD}"
 		fi
 		
-		echo "$FWHT"g"$RS:$COLOR$BRANCH$DIRTY$RS"
+		echo "$FWHT"🌿"$RS$COLOR$BRANCH$DIRTY$RS"
   fi
 }
 
@@ -78,7 +78,7 @@ function version_prompt(){
 		else
 			version=$($3  2>&1 | awk -v num=$5 -v v=$4 '/v/ {print $num}'  | egrep -o "$6")
 		fi
-		echo "$FWHT"$1"$RS:"$version"$RS"; 
+		echo "$FWHT"$1"$RS"$version"$RS"; 
 	fi
 }
 
@@ -97,13 +97,14 @@ bash_prompt() {
 	  # Then get the prompt output (no refresh logic needed in k8s_prompt anymore)
 	  KPROMPT=$(k8s_prompt)
 
-		JAVAPROMPT=$(version_prompt j "java|pom.xml" "java -version" version 3 "[0-9]+\.[0-9]+")
+		JAVAPROMPT=$(version_prompt 🍵 "java|pom.xml" "java -version" version 3 "[0-9]+\.[0-9]+")
 		WHEREPROMPT=$(where_prompt)
 		PATHPROMPT=$(path_prompt)
-		WHOPROMPT="$FWHT"w"$RS:\\\u"
+		WHOPROMPT="$FWHT"👤"$RS\u"
 		#compensate=3
     	#PS1=$(printf "%*s\r%s\$ " "$(($(tput cols)+${compensate}))" "$RIGHT" "$LEFT")
-		RIGHT=$(echo -e "$FGRY[\A]$RS" $HOST_PROMPT_COLOR${COMP}$RS $NUMFILESPROMPT $WHOPROMPT $JAVAPROMPT $GITPROMPT $KPROMPT $PATHPROMPT)
+		#RIGHT=$(echo "$FGRY[\t]$RS" $HOST_PROMPT_COLOR${COMP}$RS $NUMFILESPROMPT $WHOPROMPT $JAVAPROMPT $GITPROMPT $KPROMPT $PATHPROMPT)
+		  RIGHT="$FGRY[\t]$RS $HOST_PROMPT_COLOR${COMP}$RS $NUMFILESPROMPT $WHOPROMPT $JAVAPROMPT $GITPROMPT $KPROMPT $PATHPROMPT"
 		if [ "z$PROMPT_TWO_LINES" = "z1" ]; then
 			RIGHT="╭  $RIGHT"
 			LEFT=$(echo -e "\n╰  $RT")
