@@ -118,8 +118,9 @@ alias tree="mvn dependency:tree"
 alias m_cloud='watch -d /Users/fmr/bin/finn/misc_k8s/monitor_cloud.sh'
 alias rub='scp /Users/fmr/finn/ghe/search-breadcrumb/src/test/rubik.html  coz7cgr90_zpikesgj@ssh.coz7cgr90.service.one:/webroots/r1098183/'
 alias drimonscp='scp /Users/fmr/projects/drivhus/html/* coz7cgr90_zpikesgj@ssh.coz7cgr90.service.one:/webroots/r1098183/drimon/'
-alias claude="/Users/fmr/.claude/local/claude"
 
 alias pi="ssh pi"
 alias pi_reboot='ssh pi "sudo reboot"'
 alias dotsource='source $HOME/.dotfiles/0_dotfiles.sh'
+alias appsecrets='fraud-secrets getsec'
+alias dbsecrets='fraud-secrets getdbsecrets'
