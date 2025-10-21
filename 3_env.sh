@@ -15,7 +15,7 @@ export LESSEDIT='mate -l %lm %f'
 export FPP_EDITOR="mate"
 
 # Newest-first preference list
-JAVA_VERSIONS=(27 26 25 23 22 21 17 15 11 1.8)
+JAVA_VERSIONS=(21 27 26 25 23 22 17 15 11 1.8)
 
 # Capture installed JDKs once (keep newlines)
 JAVA_HOME_LIST=$(/usr/libexec/java_home -V 2>&1)
