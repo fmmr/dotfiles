@@ -23,11 +23,10 @@ cg() {
 }
 
 _set_gitrepository() {
-	local cur
-	cur=${COMP_WORDS[COMP_CWORD]}
-	COMPREPLY=( $( compgen -W '$PROJECT_DIRS' $cur ))
+    local cur
+    cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "${PROJECT_DIRS}" -- "$cur") )
 }
-
 complete -F _set_gitrepository cg
 
 

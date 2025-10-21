@@ -9,4 +9,6 @@ kubectl port-forward --context=nmp-rc-toripg-apps-gke01 -n postgresql $(kubectl 
 # The next line updates PATH for the Google Cloud SDK. source '/usr/local/google-cloud-sdk/path.bash.inc'
 
 # The next line enables shell command completion for gcloud.
-source '/usr/local/google-cloud-sdk/completion.bash.inc'
+if [ -f "/usr/local/google-cloud-sdk/completion.bash.inc" ]; then
+    source "/usr/local/google-cloud-sdk/completion.bash.inc"
+fi

@@ -11,17 +11,17 @@ alias 'f=tail -f $HOME/procmail/watch_mail.log $HOME/procmail/.accept* $HOME/pro
 alias 'fd=find . -type d -name '
 alias 'ff=find . -type f -name '
 
-alias 'j8=export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)'
-alias 'j1.8=export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)'
-alias 'j11=export JAVA_HOME=$(/usr/libexec/java_home -v 11)'
-alias 'j15=export JAVA_HOME=$(/usr/libexec/java_home -v 15)'
-alias 'j17=export JAVA_HOME=$(/usr/libexec/java_home -v 17)'
-alias 'j18=export JAVA_HOME=$(/usr/libexec/java_home -v 18)'
-alias 'j19=export JAVA_HOME=$(/usr/libexec/java_home -v 19)'
-alias 'j20=export JAVA_HOME=$(/usr/libexec/java_home -v 20)'
-alias 'j21=export JAVA_HOME=$(/usr/libexec/java_home -v 21)'
-alias 'j22=export JAVA_HOME=$(/usr/libexec/java_home -v 22)'
-alias 'j23=export JAVA_HOME=$(/usr/libexec/java_home -v 23)'
+# Define the Java versions you want to support
+for v in 1.8 11 15 17 18 19 20 21 22 23 25; do
+    if /usr/libexec/java_home -v "$v" >/dev/null 2>&1; then
+        alias "j${v}"="export JAVA_HOME=\$(/usr/libexec/java_home -v $v)"
+    fi
+done
+
+# Add convenience shorthand for j8 if 1.8 exists
+if alias j1.8 >/dev/null 2>&1; then
+    alias j8='j1.8'
+fi
 
 alias 'kff=killall firefox firefox-bin'
 alias 'latest=tail -F ~/bin/log/latest'
@@ -55,7 +55,11 @@ alias 'l=ls -alF'
 alias 'lt=ls -ltr'
 
 # SSH-ing
-for i in `grep "^Host" ~/.ssh/config | grep -v "Host \*" | awk '{print $2, $3, $4, $5, $6, $7, $8}'`; do alias $i="ssh $i"; done
+if [ -f "$HOME/.ssh/config" ]; then
+    for i in $(grep "^Host" "$HOME/.ssh/config" | grep -v "Host \*" | awk '{for (n=2;n<=NF;n++) print $n}'); do
+        alias "$i"="ssh $i"
+    done
+fi
 
 # CD-ing
 alias 'fjalar=cd /Users/frerodla/finn/search/search-fjalar'

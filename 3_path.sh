@@ -1,5 +1,13 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
-. "$(brew --prefix nvm)/nvm.sh"
+for brew_bin in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+    if [ -x "$brew_bin" ]; then
+        eval "$($brew_bin shellenv)"
+        nvm_sh="$($brew_bin --prefix nvm)/nvm.sh"
+        if [ -f "$nvm_sh" ]; then
+            . "$nvm_sh"
+        fi
+        break
+    fi
+done
 
 export PATH=/opt/homebrew/opt/python@3.10/libexec/bin:$PATH
 export PATH=$HOME/bin:$HOME/bin/k8s:$HOME/bin/finn:$HOME/bin/ferdig:$HOME/bin/maisen:$HOME/bin/rod:$HOME/bin/finn:$HOME/bin/backup:$PATH

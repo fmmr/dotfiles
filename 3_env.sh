@@ -14,27 +14,14 @@ export EDITOR="nano"
 export LESSEDIT='mate -l %lm %f'
 export FPP_EDITOR="mate"
 
-/usr/libexec/java_home -v 23 > /dev/null  2>&1
-if [ $? -eq 0 ]; then
-	export JAVA_HOME=$(/usr/libexec/java_home -v 23)
-else
-	/usr/libexec/java_home -v 22 > /dev/null  2>&1
-	if [ $? -eq 0 ]; then
-		export JAVA_HOME=$(/usr/libexec/java_home -v 22)
-	else
-		/usr/libexec/java_home -v 21 > /dev/null  2>&1
-		if [ $? -eq 0 ]; then
-			export JAVA_HOME=$(/usr/libexec/java_home -v 21)
-		else
-			/usr/libexec/java_home -v 17 > /dev/null  2>&1
-			if [ $? -eq 0 ]; then
-				export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-			else
-				export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-			fi
-		fi
-	fi
-fi
+# Try Java versions from newest to oldest
+for v in 25 23 22 21 17 1.8; do
+    if /usr/libexec/java_home -v "$v" >/dev/null 2>&1; then
+        export JAVA_HOME=$(/usr/libexec/java_home -v "$v")
+        break
+    fi
+done
+
 export IDEA_JDK=$JAVA_HOME
 
 export HADOOP_HOME=/usr/local/hadoop
@@ -61,7 +48,19 @@ export GIT_SSL_NO_VERIFY=true
 export PROJ_DIR=$HOME/projects
 export FINN_DIR=$HOME/finn/ghe
 export WORK_DIR="$FINN_DIR $PROJ_DIR"
-export PROJECT_DIRS=`find $WORK_DIR -type d -name "*.git" -maxdepth 2 | sed -e "s/.*\/\(.*\)\/.git/\1/"`
+# Build list of dirs that actually exist
+WORK_DIRS=()
+for d in "$PROJ_DIR" "$FINN_DIR"; do
+  [ -d "$d" ] && WORK_DIRS+=("$d")
+done
+
+# Run find safely only if we have any
+if [ ${#WORK_DIRS[@]} -gt 0 ]; then
+  export PROJECT_DIRS=$(find "${WORK_DIRS[@]}" -type d -name ".git" -maxdepth 2 2>/dev/null \
+    | sed -E 's|.*/([^/]+)/\.git|\1|')
+else
+  export PROJECT_DIRS=""
+fi
 export NVM_DIR="$HOME/.nvm"
 
 export GROUP=fmr_tester_
