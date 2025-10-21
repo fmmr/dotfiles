@@ -11,16 +11,14 @@ alias 'f=tail -f $HOME/procmail/watch_mail.log $HOME/procmail/.accept* $HOME/pro
 alias 'fd=find . -type d -name '
 alias 'ff=find . -type f -name '
 
-# Define the Java versions you want to support
-for v in 1.8 11 15 17 18 19 20 21 22 23 25; do
-    if /usr/libexec/java_home -v "$v" >/dev/null 2>&1; then
-        alias "j${v}"="export JAVA_HOME=\$(/usr/libexec/java_home -v $v)"
-    fi
-done
 
-# Add convenience shorthand for j8 if 1.8 exists
-if alias j1.8 >/dev/null 2>&1; then
-    alias j8='j1.8'
+for v in "${JAVA_VERSIONS[@]}"; do
+  if printf "%s\n" "$JAVA_HOME_LIST" | grep -qE "^[[:space:]]+$v([[:space:]]|\.)"; then
+    alias "j${v}"="export JAVA_HOME=\$(/usr/libexec/java_home -v $v)"
+  fi
+done
+if printf "%s\n" "$JAVA_HOME_LIST" | grep -qE "^[[:space:]]+1\.8([[:space:]]|\.)"; then
+  alias j8='j1.8'
 fi
 
 alias 'kff=killall firefox firefox-bin'

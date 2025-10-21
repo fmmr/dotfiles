@@ -14,12 +14,16 @@ export EDITOR="nano"
 export LESSEDIT='mate -l %lm %f'
 export FPP_EDITOR="mate"
 
-# Try Java versions from newest to oldest
-for v in 25 23 22 21 17 1.8; do
-    if /usr/libexec/java_home -v "$v" >/dev/null 2>&1; then
-        export JAVA_HOME=$(/usr/libexec/java_home -v "$v")
-        break
-    fi
+# Newest-first preference list
+JAVA_VERSIONS=(27 26 25 23 22 21 17 15 11 1.8)
+
+# Capture installed JDKs once (keep newlines)
+JAVA_HOME_LIST=$(/usr/libexec/java_home -V 2>&1)
+for v in "${JAVA_VERSIONS[@]}"; do
+  if printf "%s\n" "$JAVA_HOME_LIST" | grep -qE "^[[:space:]]+$v([[:space:]]|\.)"; then
+    export JAVA_HOME=$(/usr/libexec/java_home -v "$v")
+    break
+  fi
 done
 
 export IDEA_JDK=$JAVA_HOME
