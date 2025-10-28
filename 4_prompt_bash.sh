@@ -71,15 +71,25 @@ if [[ -z "$COMP" ]]; then
 fi
 
 function version_prompt(){
-	ls | egrep "\.$2" >/dev/null 2>&1
-	if [ $? -eq 0 ]; then
-		if [ -z "$6" ]; then
-			version=$($3  2>&1 | awk -v num=$5 -v v=$4 '/v/ {print $num}')
-		else
-			version=$($3  2>&1 | awk -v num=$5 -v v=$4 '/v/ {print $num}'  | egrep -o "$6")
-		fi
-		echo "$FWHT"$1"$RS"$version"$RS"; 
-	fi
+  ls | egrep "\.$2" >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    if [ -z "$6" ]; then
+      version=$($3 2>&1 | awk -v num=$5 '/version/ {print $num; exit}')
+    else
+      version=$($3 2>&1 | awk -v num=$5 '/version/ {print $num; exit}' | egrep -o "$6")
+    fi
+
+    # strip optional surrounding quotes
+    version=${version%\"}
+    version=${version#\"}
+
+    # if it has no dot (e.g. "25"), make it "25.0"
+    if [[ "$version" != *.* ]]; then
+      version="${version}.0"
+    fi
+
+    echo "$FWHT"$1"$RS"$version"$RS"
+  fi
 }
 
 bash_prompt() {
@@ -97,7 +107,7 @@ bash_prompt() {
 	  # Then get the prompt output (no refresh logic needed in k8s_prompt anymore)
 	  KPROMPT=$(k8s_prompt)
 
-		JAVAPROMPT=$(version_prompt 🍵 "java|pom.xml" "java -version" version 3 "[0-9]+\.[0-9]+")
+    JAVAPROMPT=$(version_prompt 🍵 "java|pom.xml" "java -version" version 3 "[0-9]+(\.[0-9]+)?")
 		WHEREPROMPT=$(where_prompt)
 		PATHPROMPT=$(path_prompt)
 		WHOPROMPT="$FWHT"👤"$RS\u"

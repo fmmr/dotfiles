@@ -84,7 +84,7 @@ function pgforward() {
 # Claude code use vertex
 export CLAUDE_CODE_USE_VERTEX=1
 export CLOUD_ML_REGION="us-east5"
-#export CLOUD_ML_REGION="europe-west-4"
+#export CLOUD_ML_REGION="europe-west-1"
 #export ANTHROPIC_VERTEX_PROJECT_ID="ai-unit-441410"
 export ANTHROPIC_VERTEX_PROJECT_ID="nmp-pc-fraud-experimentation"
 #export ANTHROPIC_MODEL="claude-sonnet-4@20250514"
