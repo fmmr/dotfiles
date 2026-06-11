@@ -26,7 +26,7 @@ alias 'latest=tail -F ~/bin/log/latest'
 alias 'less=less -Mi'
 alias 'mvn=mvn -T 1C'
 alias 'mvnsd=mvn -T 1C -DdownloadSources=true -DdownloadJavadocs=true'
-alias 'mci=mvn -T 1C clean install'
+# alias 'mci=mvn -T 1C clean install'
 alias 'md=mkdir'
 alias 'nano=nano -w'
 # alias 'ns=nslookup -sil'
@@ -40,6 +40,7 @@ alias 'where=type -all'
 alias 'x=xargs'
 alias update_locate='sudo /usr/libexec/locate.updatedb'
 alias check_net="ping vg.no | awk -F = {'print \$4'}"
+alias vncmaisen='pids=$(pgrep -f "ssh.*-L 5900:localhost:5900 maisen"); if [ -n "$pids" ]; then kill $pids; fi; ssh -fN -L 5900:localhost:5900 maisen && open vnc://localhost:5900'
 
 # FINN-ing
 alias 'gits=cd ~/finn/search && for i in `ls`; do echo "----CHECKING $i----"; cd $i; git s; cd ..; done'
@@ -124,3 +125,7 @@ alias pi_reboot='ssh pi "sudo reboot"'
 alias dotsource='source $HOME/.dotfiles/0_dotfiles.sh'
 alias appsecrets='fraud-secrets getsec'
 alias dbsecrets='fraud-secrets getdbsecrets'
+
+alias postjson='curl -X POST -H "Content-Type: application/json"'
+alias post='curl -X POST'
+

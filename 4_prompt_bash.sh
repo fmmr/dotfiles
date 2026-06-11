@@ -83,12 +83,7 @@ function version_prompt(){
     version=${version%\"}
     version=${version#\"}
 
-    # if it has no dot (e.g. "25"), make it "25.0"
-    if [[ "$version" != *.* ]]; then
-      version="${version}.0"
-    fi
-
-    echo "$FWHT"$1"$RS"$version"$RS"
+    echo "$FWHT"$1"$RS" $version"$RS"
   fi
 }
 

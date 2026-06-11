@@ -8,7 +8,7 @@ for brew_bin in /opt/homebrew/bin/brew /usr/local/bin/brew; do
         break
     fi
 done
-
+export PATH="$HOME/.local/bin:$PATH"
 export PATH=/opt/homebrew/opt/python@3.10/libexec/bin:$PATH
 export PATH=$HOME/bin:$HOME/bin/k8s:$HOME/bin/finn:$HOME/bin/ferdig:$HOME/bin/maisen:$HOME/bin/rod:$HOME/bin/finn:$HOME/bin/backup:$PATH
 export PATH=$PATH:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/libexec:/root/bin
