@@ -19,12 +19,18 @@ JAVA_VERSIONS=(21 27 26 25 23 22 17 15 11 1.8)
 
 # Capture installed JDKs once (keep newlines)
 JAVA_HOME_LIST=$(/usr/libexec/java_home -V 2>&1)
-for v in "${JAVA_VERSIONS[@]}"; do
-  if printf "%s\n" "$JAVA_HOME_LIST" | grep -qE "^[[:space:]]+$v([[:space:]]|\.)"; then
-    export JAVA_HOME=$(/usr/libexec/java_home -v "$v")
-    break
-  fi
-done
+# Only pick a default JDK if the parent shell didn't already set JAVA_HOME.
+# Without this guard, subshells (e.g. Claude Code's Bash tool, mci's child mvn)
+# would clobber a JAVA_HOME deliberately exported by the parent (e.g. via mci
+# / set_java_home_from_pom) and silently downgrade to whatever's first here.
+if [ -z "$JAVA_HOME" ]; then
+  for v in "${JAVA_VERSIONS[@]}"; do
+    if printf "%s\n" "$JAVA_HOME_LIST" | grep -qE "^[[:space:]]+$v([[:space:]]|\.)"; then
+      export JAVA_HOME=$(/usr/libexec/java_home -v "$v")
+      break
+    fi
+  done
+fi
 
 export IDEA_JDK=$JAVA_HOME
 
