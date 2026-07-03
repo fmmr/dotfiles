@@ -1,6 +1,6 @@
 # https://github.com/runarmyklebust/bashstuff/blob/master/.bashrc
 
-up() {
+upn() {
 	LIMIT=$1
 
 	if [ -z "$LIMIT" ]; then

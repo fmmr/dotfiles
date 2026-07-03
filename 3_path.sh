@@ -38,3 +38,14 @@ if [ -f /usr/local/google-cloud-sdk/path.bash.inc ]; then
   source '/usr/local/google-cloud-sdk/path.bash.inc'
 fi
 
+# Google Cloud SDK
+for gcloud_root in \
+    /opt/homebrew/share/google-cloud-sdk \
+    /opt/homebrew/Caskroom/gcloud-cli/*/google-cloud-sdk \
+    /usr/local/google-cloud-sdk; do
+  if [ -f "$gcloud_root/path.bash.inc" ]; then
+    source "$gcloud_root/path.bash.inc"
+    [ -f "$gcloud_root/completion.bash.inc" ] && source "$gcloud_root/completion.bash.inc"
+    break
+  fi
+done

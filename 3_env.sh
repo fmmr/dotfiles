@@ -57,10 +57,12 @@ export GIT_SSL_NO_VERIFY=true
 
 export PROJ_DIR=$HOME/projects
 export FINN_DIR=$HOME/finn/ghe
-export WORK_DIR="$FINN_DIR $PROJ_DIR"
+# $HOME last so cg matches specific roots first (e.g. FINN_DIR/nexus-be) before
+# falling back to plain $HOME/name (needed for cg .dotfiles, cg bin).
+export WORK_DIR="$FINN_DIR $PROJ_DIR $HOME"
 # Build list of dirs that actually exist
 WORK_DIRS=()
-for d in "$PROJ_DIR" "$FINN_DIR"; do
+for d in "$PROJ_DIR" "$FINN_DIR" "$HOME/.dotfiles" "$HOME/bin"; do
   [ -d "$d" ] && WORK_DIRS+=("$d")
 done
 

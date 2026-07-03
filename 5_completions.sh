@@ -27,7 +27,7 @@ _set_gitrepository() {
     cur=${COMP_WORDS[COMP_CWORD]}
     COMPREPLY=( $(compgen -W "${PROJECT_DIRS}" -- "$cur") )
 }
-complete -F _set_gitrepository cg
+complete -F _set_gitrepository cg up
 
 
 _set_search_pods() {
