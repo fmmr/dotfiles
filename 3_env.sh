@@ -57,9 +57,12 @@ export GIT_SSL_NO_VERIFY=true
 
 export PROJ_DIR=$HOME/projects
 export FINN_DIR=$HOME/finn/ghe
+# Monorepos: their immediate subdirs are also valid `cg` targets even though
+# they aren't git repos themselves.
+MONOREPO_DIRS=("$HOME/finn/ghe/realestate")
 # $HOME last so cg matches specific roots first (e.g. FINN_DIR/nexus-be) before
 # falling back to plain $HOME/name (needed for cg .dotfiles, cg bin).
-export WORK_DIR="$FINN_DIR $PROJ_DIR $HOME"
+export WORK_DIR="${MONOREPO_DIRS[*]} $FINN_DIR $PROJ_DIR $HOME"
 # Build list of dirs that actually exist
 WORK_DIRS=()
 for d in "$PROJ_DIR" "$FINN_DIR" "$HOME/.dotfiles" "$HOME/bin"; do
@@ -68,11 +71,15 @@ done
 
 # Run find safely only if we have any
 if [ ${#WORK_DIRS[@]} -gt 0 ]; then
-  export PROJECT_DIRS=$(find "${WORK_DIRS[@]}" -type d -name ".git" -maxdepth 2 2>/dev/null \
+  PROJECT_DIRS=$(find "${WORK_DIRS[@]}" -type d -name ".git" -maxdepth 2 2>/dev/null \
     | sed -E 's|.*/([^/]+)/\.git|\1|')
 else
-  export PROJECT_DIRS=""
+  PROJECT_DIRS=""
 fi
+for m in "${MONOREPO_DIRS[@]}"; do
+  [ -d "$m" ] && PROJECT_DIRS="$PROJECT_DIRS $(find "$m" -mindepth 1 -maxdepth 1 -type d -not -name '.*' -exec basename {} \;)"
+done
+export PROJECT_DIRS
 export NVM_DIR="$HOME/.nvm"
 
 export GROUP=fmr_tester_
