@@ -17,7 +17,11 @@ cg() {
 	for dir in $WORK_DIR; do
 		if [ -d "$dir/$1" ]; then
 			builtin cd "$dir/$1"
-			break
+			return
+		fi
+		if [ -d "$dir/.$1" ]; then
+			builtin cd "$dir/.$1"
+			return
 		fi
 	done
 }

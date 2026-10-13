@@ -72,7 +72,8 @@ done
 # Run find safely only if we have any
 if [ ${#WORK_DIRS[@]} -gt 0 ]; then
   PROJECT_DIRS=$(find -L "${WORK_DIRS[@]}" -type d -name ".git" -maxdepth 2 2>/dev/null \
-    | sed -E 's|.*/([^/]+)/\.git|\1|')
+    | sed -E 's|.*/([^/]+)/\.git|\1|' \
+    | awk '{print; if (/^\./) print substr($0,2)}')
 else
   PROJECT_DIRS=""
 fi
