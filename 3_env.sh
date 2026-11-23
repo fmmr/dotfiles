@@ -98,14 +98,21 @@ function pgforward() {
 }
 
 # Claude code use vertex
-export CLAUDE_CODE_USE_VERTEX=1
-export CLOUD_ML_REGION="eu"
+#export CLAUDE_CODE_USE_VERTEX=1
+#export CLOUD_ML_REGION="eu"
+#export ANTHROPIC_VERTEX_PROJECT_ID="nmp-pc-fraud-experimentation"
+
+
 #export CLOUD_ML_REGION="us-east5"
 #export CLOUD_ML_REGION="europe-west-1"
+#export CLOUD_ML_REGION="us-central1"
 #export ANTHROPIC_VERTEX_PROJECT_ID="ai-unit-441410"
-export ANTHROPIC_VERTEX_PROJECT_ID="nmp-pc-fraud-experimentation"
 #export ANTHROPIC_MODEL="claude-sonnet-4@20250514"
 #export ANTHROPIC_MODEL="claude-opus-4-6"
+# Opus 5.5 is only published in us-central1 on Vertex for this project (not in any EU region).
+# To use it: swap CLOUD_ML_REGION to us-central1 above and uncomment the next line.
+# Quota must be raised separately — current project quota is 0 tokens/min for anthropic-claude-opus-5-5.
+#export ANTHROPIC_DEFAULT_OPUS_MODEL="claude-opus-5-5"
 export AWS_PROFILE=ai-unit-dev
 
 # K8s - prettier diffs for `kubectl diff`

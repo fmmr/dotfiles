@@ -18,7 +18,12 @@ function set_java_home_from_pom {
 
 function mci {
       set_java_home_from_pom || return 1
-      mvn clean install "$@"
+      local mvn_cmd=mvn
+      if [ -x ./mvnw ]; then
+        mvn_cmd=./mvnw
+      fi
+      echo "Using $mvn_cmd"
+      "$mvn_cmd" clean install "$@"
   }
 
 function c {
